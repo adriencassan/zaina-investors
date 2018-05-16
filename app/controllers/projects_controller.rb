@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-before_action :find_project, only: [:new, :show]
+before_action :find_project, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -8,7 +8,6 @@ before_action :find_project, only: [:new, :show]
   end
 
   def new
-    @user = User.find(params[:user_id])
     @project = Project.new
   end
 

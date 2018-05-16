@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users do
-    resources :projects
     collection do
-      get 'advisors', to: "restaurants#advisors"
+      get 'advisors', to: "user#advisor"
     end
   end
+
+  resources :projects
 
 end
