@@ -1,0 +1,6 @@
+<!-- Display depending on role : admin ok, entrepreneur only project and advisor only its projects -->
+<ul>
+  <% @projects.each do |id, project| %>
+    <li><%= project[:project_name] %> (<%= project[:advisor] %>)</li>
+  <% end %>
+</ul>
