@@ -15,8 +15,6 @@ before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def create
     @project = Project.new(project_params)
-      # we need an advisor, not a user. the advisor is selected by admin
-    @project.advisor = params[:advisor]
     authorize @project
     @project.save
   end
@@ -44,7 +42,7 @@ private
   end
 
   def project_params
-    params.require(:project).permit(:status, :advisor, :company, :sector, :project_name)
+    params.require(:project).permit(:status, :user, :company, :sector, :project_name)
   end
 
 end

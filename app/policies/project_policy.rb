@@ -1,5 +1,6 @@
 class ProjectPolicy < ApplicationPolicy
   class Scope < Scope #index
+
     def resolve
       Project.all #can  be .where(user = ...)
     end
