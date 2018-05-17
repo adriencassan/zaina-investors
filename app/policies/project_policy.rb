@@ -1,10 +1,9 @@
 class ProjectPolicy < ApplicationPolicy
   class Scope < Scope #index
-
     def resolve
       Project.all #can  be .where(user = ...)
     end
-
+  end
 
     def new?
       create?      # @user.present?. Anyone that is logged in can create a project
@@ -33,7 +32,6 @@ class ProjectPolicy < ApplicationPolicy
 
     def is_owner_or_admin?
       @record.user == @user || @user.admin
-
     end
-  end
+
 end

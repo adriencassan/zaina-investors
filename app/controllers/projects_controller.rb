@@ -2,9 +2,8 @@ class ProjectsController < ApplicationController
 
 before_action :find_project, only: [:show, :edit, :update, :destroy]
 
-
   def index
-    @projects = Project.policy_scope(Project)
+    @projects = policy_scope(Project)
   end
 
   def new
@@ -15,8 +14,14 @@ before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def create
     @project = Project.new(project_params)
+    @project.user = current_user
     authorize @project
-    @project.save
+    if @project.save
+      flash[:success] = "Thanks! We'll be in touch soon!"
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
 
   def show
@@ -42,7 +47,7 @@ private
   end
 
   def project_params
-    params.require(:project).permit(:status, :user, :company, :sector, :project_name)
+    params.require(:project).permit(:sector, :project_name, :description)
   end
 
 end

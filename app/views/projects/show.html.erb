@@ -1,6 +1,15 @@
-<p> Tabs of the <%= current_user.email %>'s to be displayed. Tabs are supposed to be different depending on role</p>
+<p> Project <%= @project.project_name %><%= current_user.email %>/p>
 
 <div>
+
+<div>
+  <h3> You submitted the following project for Zaina's review. </h3>
+  <p>Project name : <%= @project.project_name%></p>
+  <p>Your goal : <%= @project.description%></p>
+  <p>Sector: <%= @project.sector%></p>
+  <p>We'll come back to you with a suggested advisor to help you.</p>
+</div>
+
 
 <div class="tabs">
   <a class="tab active" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
