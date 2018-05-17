@@ -18,6 +18,19 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :function])
   end
 
+
+  # def after_sign_up_path_for(resource)
+  #   if current_user.role == "Zaina"
+  #     attr_writer :attr_namesprojects_path
+  #   elsif
+  #     current_user.role == "Advisor"
+  #     projects_path
+  #   else
+  #     current_user.role == "Entrepreneur"
+  #     new_project_path
+  #   end
+  # end
+
   def after_sign_in_path_for(resource)
     if current_user.role == "Zaina"
       projects_path
@@ -26,23 +39,16 @@ class ApplicationController < ActionController::Base
       projects_path
     else
       current_user.role == "Entrepreneur"
-      # @project_member = ProjectMember.where(user: current_user)
-      @project = current_user.projects.first
-      project_path(@project)
+      if current_user.projects.empty?
+        new_project_path
+      else
+        @project = current_user.projects.first
+        project_path(@project)
+      end
     end
   end
 
-  def after_sign_up_path_for(resource)
-    if current_user.role == "Zaina"
-      projects_path
-    elsif
-      current_user.role == "Advisor"
-      projects_path
-    else
-      current_user.role == "Entrepreneur"
-      new_project_path
-    end
-  end
+
 
 
   private

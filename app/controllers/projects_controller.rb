@@ -7,8 +7,8 @@ before_action :find_project, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    @project = Project.new
-    @advisors = User.where(role: "advisor")
+    @project = Project.new(user: current_user)
+    # @advisors = User.where(role: "advisor")
     authorize @project
   end
 
@@ -17,7 +17,6 @@ before_action :find_project, only: [:show, :edit, :update, :destroy]
     @project.user = current_user
     authorize @project
     if @project.save
-      @project.new_project_member(current_user, @project)
       flash[:success] = "Thanks! We'll be in touch soon!"
       redirect_to project_path(@project)
     else
@@ -25,20 +24,9 @@ before_action :find_project, only: [:show, :edit, :update, :destroy]
     end
   end
 
-  def new_project_member(user, project)
-    @project_member = ProjectMember.new(user, project)
-  end
 
   def show
     authorize @project
-    # if current_user.role == "Zaina"
-    #   render 'accounts/buyer'
-    # elsif current_user.role == ""
-    #   render 'accounts/seller'
-    # elsif current_user.role == "Entrepreneur"
-    #   render 'accounts/administrator'
-    # end
-
   end
 
   def edit
