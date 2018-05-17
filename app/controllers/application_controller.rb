@@ -50,7 +50,6 @@ class ApplicationController < ActionController::Base
 
 
 
-
   private
 
   def skip_pundit?
