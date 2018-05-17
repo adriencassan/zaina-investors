@@ -1,1 +1,42 @@
-<p> Tabs of the <%= project.advisor %>'s project to be displayed by Adrien</p>
+<p> Tabs of the <%= @project.advisor %>'s project to be displayed by Adrien</p>
+
+<div>
+
+<div class="tabs">
+  <a class="tab active" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
+    <h3>STEP 1</h3>
+    <p>Basic info</p>
+  </a>
+  <a class="tab" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
+    <h3>STEP 2</h3>
+    <p>Date your advisor</p>
+  </a>
+  <a class="tab" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
+    <h3>STEP 3</h3>
+    <p>Pay Zaina</p>
+  </a>
+  <a class="tab" href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">
+    <h3>STEP 4</h3>
+    <p>Go to BUMI</p>
+  </a>
+</div>
+
+ <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="tab1">
+      <%= render 'projects/tabs/tab1' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="tab2">
+      <%= render 'projects/tabs/tab2' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="tab3">
+       <%= render 'projects/tabs/tab3' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="tab4">
+      <%= render 'projects/tabs/tab4' %>
+    </div>
+  </div>
+
+</div>
+
+
+
