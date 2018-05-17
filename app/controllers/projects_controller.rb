@@ -9,6 +9,7 @@ before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def new
     @project = Project.new
+    @advisors = User.where(role: "advisor")
     authorize @project
   end
 

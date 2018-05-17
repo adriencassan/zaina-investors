@@ -2,7 +2,7 @@
 <h1> Here is the first step to create a project by Zaina's team : chose and advisor, and affect it to the project </h1>
 
 <%= simple_form_for [@project] do |f| %>
-  <%= f.input :advisor, :collection => User.advisor.pluck(:last_name) %>
+  <%= f.input :advisor, :collection => @advisors %>
   <%= f.submit "add an advisor", class: "btn btn-primary" %>
 <% end %>
 
