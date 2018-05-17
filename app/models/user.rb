@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :project_members
-  has_many :projects, through: :project_member
+
 
   def self.advisor
    User.where(role: "advisor")
