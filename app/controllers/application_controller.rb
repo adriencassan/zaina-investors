@@ -26,7 +26,9 @@ class ApplicationController < ActionController::Base
       projects_path
     else
       current_user.role == "Entrepreneur"
-      new_project_path
+      # @project_member = ProjectMember.where(user: current_user)
+      @project = current_user.projects.first
+      project_path(@project)
     end
   end
 
@@ -42,10 +44,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
-
 end
