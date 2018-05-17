@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   root to: 'pages#home'
-
-  resources :users do
-    collection do
-      get 'advisors', to: "user#advisor"
-    end
-  end
 
   resources :projects
 
-  get "/pages/:entrepreneur_page" => "pages#show"
+  get "/pages/entrepreneurs" => "pages#entrepreneurs"
 
 
 
