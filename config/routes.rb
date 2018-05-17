@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   get "/pages/:entrepreneur_page" => "pages#show"
 
+
+
 end
