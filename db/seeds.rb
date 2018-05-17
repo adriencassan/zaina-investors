@@ -24,6 +24,7 @@ user = User.new(email: "e@e.e", password: "password", role: "Zaina")
 user.save
 
 # Users / Advisors
+
 user = User.new(email: "aa@a.a", password: "password", role: "Advisor")
 user.save
 
@@ -39,8 +40,23 @@ user.save
 user = User.new(email: "ae@e.e", password: "password", role: "Advisor")
 user.save
 
-
 # Users / Entrepreneurs
+user = User.new(email: "ea@a.a", password: "password", role: "Entrepreneur")
+user.save
+
+user = User.new(email: "eb@b.b", password: "password", role: "Entrepreneur")
+user.save
+
+user = User.new(email: "ec@c.c", password: "password", role: "Entrepreneur")
+user.save
+
+user = User.new(email: "ed@d.d", password: "password", role: "Entrepreneur")
+user.save
+
+user = User.new(email: "ee@e.e", password: "password", role: "Entrepreneur")
+user.save
+
+
 
 # create_table "users", force: :cascade do |t|
 #     t.string "email", default: "", null: false
