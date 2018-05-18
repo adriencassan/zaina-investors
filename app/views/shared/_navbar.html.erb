@@ -11,9 +11,9 @@
     <div style="color:#972F2A">
       <% if user_signed_in? %>
       Welcome <%= current_user.email %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-primary",style:"color: white" %>
       <% else %>
-        <a href="<%= new_user_session_path %> " id="sweet-alert-demo" class="btn btn-primary" style="color: #972F2A">Log in</a>
+        <a href="<%= new_user_session_path %> " class="btn btn-primary" style="color: white">Log in</a>
       <% end %>
     </div>
     <!-- Avatar with dropdown menu -->
