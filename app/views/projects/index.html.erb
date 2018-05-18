@@ -1,8 +1,19 @@
 <!-- Display depending on role : admin ok, entrepreneur only project and advisor only its projects -->
 
-<p> Tabs of the <%= current_user.email  %>'s to be displayed. Tabs are supposed to be different depending on role</p>
 
-<div>
+<div class="container text-center" style="width: 600; margin-top: 50px; height:50px">
+<!-- Single button -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Chose the project you want to work on <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <%  @projects.each do |project|%>
+      <li> <%= link_to project.project_name, project_path(project), class: "dropdown-item" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <div class="tabs">
   <a class="tab active" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
