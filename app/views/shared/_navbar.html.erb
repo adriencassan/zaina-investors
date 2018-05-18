@@ -1,19 +1,19 @@
 <div class="navbar-wagon navbar-fixed-top">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+    <%= image_tag "rosace bordeaux.png", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Log in button -->
-    <div>
+    <div style="color:#972F2A">
       <% if user_signed_in? %>
       Welcome <%= current_user.email %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
       <% else %>
-        <a href="<%= new_user_session_path %> " id="sweet-alert-demo" class="btn btn-primary">Log in</a>
+        <a href="<%= new_user_session_path %> " id="sweet-alert-demo" class="btn btn-primary" style="color: #972F2A">Log in</a>
       <% end %>
     </div>
     <!-- Avatar with dropdown menu -->
