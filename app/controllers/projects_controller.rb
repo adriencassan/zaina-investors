@@ -28,6 +28,7 @@ before_action :find_project, only: [:show, :edit, :update, :destroy]
 
 
   def show
+    @project = Project.find(params[:id])
     authorize @project
   end
 
