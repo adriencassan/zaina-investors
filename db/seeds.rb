@@ -23,6 +23,8 @@ user.save!
 user = User.new(email: "e@e.e", password: "password", role: "Zaina")
 user.save!
 
+
+
 # Users / Advisors
 
 user = User.new(email: "aa@a.a", password: "password", role: "Advisor")

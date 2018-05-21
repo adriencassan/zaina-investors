@@ -1,65 +1,85 @@
-
-
 <div style="text-align: center">
   <h2 class="title">Project <%= @project.project_name%></h2>
+  <% if current_user.role == "Zaina" %>
    <a href="<%= projects_path %> " class="btn btn-primary" style="color: white">Back to projects home space, for zaina only!</a>
+   <%end  %>
 </div>
 
 
 
 <div class="tabs">
   <a class="tab active" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
-    <h3>Icon to add</h3>
+    <h3>Message center</h3>
     <% if current_user.role == "Zaina"%>
-      <p> Entrepreneur messages </p>
+      <p> Deal team </p>
     <% elsif %>
       <% current_user.role == "Advisor" %>
-      <p>Entrepreneur messages</p>
+      <p> Deal team</p>
     <% elsif %>
       <% current_user.role == "Entrepreneur" %>
-      <p>Zaina messages</p>
+      <p> Deal team </p>
     <% end%>
   </a>
 
   <a class="tab" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
-    <h3>Icon to add</h3>
+    <h3> Company </h3>
       <% if current_user.role == "Zaina"%>
-        <p> Advisor messages </p>
+        <p> Detailed profile </p>
       <% elsif %>
         <% current_user.role == "Advisor" %>
-        <p>Zaina messages</p>
+        <p>Detailed profile</p>
       <% else %>
         <% current_user.role == "Entrepreneur" %>
-        <p>Your advisor messages</p>
+        <p>Detailed profile</p>
     <% end%>
   </a>
 
   <a class="tab" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
-    <h3>Icon to add</h3>
+    <h3>Investors follow-up</h3>
       <% if current_user.role == "Zaina"%>
-        <p> Investors follow-up </p>
+        <p> Live feed </p>
       <% elsif %>
         <% current_user.role == "Advisor" %>
-        <p>Investors follow-up</p>
+        <p>Live feed</p>
       <% else %>
         <% current_user.role == "Entrepreneur" %>
-        <p>Investors follow-up</p>
+        <p>Live feed</p>
     <% end%>
   </a>
 
-  </a>
+
   <a class="tab" href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">
-    <h3>Icon to add</h3>
+    <h3>Database</h3>
       <% if current_user.role == "Zaina"%>
-        <p> Company's profile </p>
+        <p> Investors universe </p>
       <% elsif %>
         <% current_user.role == "Advisor" %>
-        <p>Company's profile</p>
+        <p> Investors universe </p>
       <% else %>
         <% current_user.role == "Entrepreneur" %>
-        <p>My profile</p>
+        <p>Investors universe</p>
     <% end%>
   </a>
+
+
+   <a class="tab" href="#tab5" aria-controls="tab5" role="tab" data-toggle="tab">
+      <h3>Documents</h3>
+    </a>
+
+
+  <% if current_user.role == "Zaina"%>
+    <a class="tab" href="#tab6" aria-controls="tab6" role="tab" data-toggle="tab">
+      <h3>Internal message center</h3>
+        <% if current_user.role == "Zaina"%>
+          <p> with Advisor </p>
+        <% else %>
+          <% current_user.role == "Advisor" %>
+          <p> with Zaina </p>
+        <% end%>
+    </a>
+  <% end %>
+
+
 </div>
 
   <div class="tab-content">
@@ -75,6 +95,11 @@
     <div role="tabpanel" class="tab-pane" id="tab4">
       <%= render 'projects/tabs/tab4' %>
     </div>
+    <div role="tabpanel" class="tab-pane" id="tab5">
+      <%= render 'projects/tabs/tab5' %>
+    </div>
+      <div role="tabpanel" class="tab-pane" id="tab6">
+      <%= render 'projects/tabs/tab6' %>
+    </div>
   </div>
-
 

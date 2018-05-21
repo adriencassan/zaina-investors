@@ -38,7 +38,8 @@ class ApplicationController < ActionController::Base
       current_user.role == "Advisor"
       projects_path
     else
-      current_user.role == "Entrepreneur"
+      current_user.role = "Entrepreneur"
+      current_user.save!
       if current_user.projects.empty?
         new_project_path
       else
@@ -47,7 +48,6 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
 
 
   private

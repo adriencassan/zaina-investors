@@ -3,7 +3,7 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "rosace bordeaux.png", height: 50 %>
     <% if user_signed_in? %>
-      Welcome <%= current_user.email%>
+      Welcome <%= current_user.last_name%> <%= current_user.first_name%>
       <%end  %>
   <% end %>
 
@@ -17,7 +17,7 @@
       <% if user_signed_in? %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-primary", style:"color: white; font-size: 14px; margin-left: 20px" %>
       <% else %>
-        <a href="<%= new_user_session_path %> " class="btn btn-primary" style="color: white">Log in</a>
+        <a href="<%= new_user_session_path %> " class="btn btn-primary", style="color: white; font-size: 14px; margin-left: 20px">Log in</a>
       <% end %>
     </div>
     <!-- Avatar with dropdown menu -->
