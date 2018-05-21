@@ -1,10 +1,29 @@
-<div style="text-align: center">
-  <h2 class="title">Project <%= @project.project_name%></h2>
+<div >
+  <div class="list-inline" style="margin-top: 20px; text-align: center; background-color: #D7D7D7">
+  <li><h3 style="color: #972F2A; font-size: 18px; font-weight: bold">Project "<%= @project.project_name%>"</h3></li>
+  <li>
   <% if current_user.role == "Zaina" %>
-   <a href="<%= projects_path %> " class="btn btn-primary" style="color: white">Back to projects home space, for zaina only!</a>
-   <%end  %>
+     <a href="<%= projects_path %> " class="btn btn-primary" style="color: white; font-size: 16px; background: none;
+    border: none">Chose another project</a>
+     <%end %>
+  </li>
+  </div>
 </div>
 
+<div class="show_header ">
+  <div class="box_header col-md-6" style="text-align: center">
+    <h2 >Overview</h2>
+    <h1>Description:</h1>
+    <h1><%= @project.description %></1>
+    <h1>Advisor:</h1>
+    <p>lqnflzednfl</p>
+  </div>
+
+  <div class="box_header col-md-6" style="text-align: center">
+    <h2 >Updates</h2>
+
+  </div>
+</div>
 
 
 <div class="tabs">
