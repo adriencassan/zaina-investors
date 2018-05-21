@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  devise_for :users
+  devise_for :users do
+    collection do
+     get "advisor", to: "users#advisor"
+    end
+  end
+
   resources :projects
   get "/pages/entrepreneurs" => "pages#entrepreneurs"
 

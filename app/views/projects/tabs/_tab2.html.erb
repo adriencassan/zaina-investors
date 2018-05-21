@@ -1,1 +1,19 @@
-<h2>Welcome to tab 2</h2>
+
+<h3>Project advisor:</h3>
+<div class="container text-center" style="width: 600; margin-top: 50px; height:50px">
+<!-- Single button -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Chose relevant advisor for this project <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <%  User.advisor.each do |advisor|%>
+      <li> <%= advisor.last_name %> </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<h3>Messages with advisor:</h3>
+
+

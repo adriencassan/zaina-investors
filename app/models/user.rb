@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :project_members
   has_many :projects
 
+
+   def self.advisor
+    @advisors = User.where(role: "Advisor")
+   end
+
 end
