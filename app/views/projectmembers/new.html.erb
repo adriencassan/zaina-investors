@@ -1,20 +1,14 @@
-<div class="container text-center" style="width: 600; margin-top: 50px; height:50px">
+
+<div class="container text-center input">
 <!-- Single button -->
-<% @advisors = User.where(role: "Advisor") %>
-
-<%= simple_form_for [@project, @projectmember] do |f| %>
-  <%= f.error_notification %>
-<div class="container text-center" style="width: 600">
-  <h2>Choose relevant advisor for this project</h2>
-    <%= f.input :user_id, collection: @advisors,:label_method => :email %>
-    <%= f.submit "Submit advisor" %>
-<div>
-<% end %>
-
-<!-- f.association :user, :collection => User.where(:country_id => 1), :label_method => :name, :value_method => :id
-
-
- -->
+  <%= simple_form_for [@project, @projectmember] do |f| %>
+    <%= f.error_notification %>
+    <div class="container text-center input">
+      <h2>Choose relevant advisor for this project</h2>
+        <%= f.input :user_id, collection: User.advisor,:label_method => :email %>
+        <%= f.submit "Submit advisor" %>
+    <div>
+  <% end %>
 
 </div>
 

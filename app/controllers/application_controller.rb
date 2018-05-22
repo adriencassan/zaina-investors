@@ -19,18 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
 
-  # def after_sign_up_path_for(resource)
-  #   if current_user.role == "Zaina"
-  #     attr_writer :attr_namesprojects_path
-  #   elsif
-  #     current_user.role == "Advisor"
-  #     projects_path
-  #   else
-  #     current_user.role == "Entrepreneur"
-  #     new_project_path
-  #   end
-  # end
-
   def after_sign_in_path_for(resource)
     if current_user.role == "Zaina"
       projects_path

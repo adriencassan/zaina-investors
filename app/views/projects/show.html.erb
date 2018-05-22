@@ -1,17 +1,17 @@
+
 <div >
-  <div class="list-inline" style="margin-top: 20px; text-align: center; background-color: #D7D7D7">
-  <li><h3 style="color: #972F2A; font-size: 18px; font-weight: bold">Project "<%= @project.project_name%>"</h3></li>
+  <div class="list-inline project_intro">
+  <li><h3 >Project "<%= @project.project_name%>"</h3></li>
   <li>
   <% if current_user.role == "Zaina" %>
-     <a href="<%= projects_path %> " class="btn btn-primary" style="color: white; font-size: 16px; background: none;
-    border: none">Chose another project</a>
+     <a href="<%= projects_path %> " class="btn btn-primaryn back_button">Chose another project</a>
      <%end %>
   </li>
   </div>
 </div>
 
 <div class="show_header ">
-  <div class="box_header col-md-6" style="text-align: center">
+  <div class="box_header col-md-6" >
     <h1 >Overview</h1>
     <h2>Description:</h2>
       <p> <%= @project.description %></p>
@@ -27,7 +27,7 @@
           <%end%> </p>
   </div>
 
-  <div class="box_header col-md-6" style="text-align: center">
+  <div class="box_header col-md-6">
     <h1 >Updates</h1>
   </div>
 
