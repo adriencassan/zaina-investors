@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :projects
+  resources :projects do
+    resources :projectmembers, only: [ :new, :create ]
+  end
+
   get "/pages/entrepreneurs" => "pages#entrepreneurs"
+
 
 end

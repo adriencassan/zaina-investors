@@ -3,7 +3,7 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "rosace bordeaux.png", height: 50 %>
     <% if user_signed_in? %>
-      Welcome <%= current_user.last_name%> <%= current_user.first_name%>
+      Welcome <%= current_user.first_name%> <%= current_user.last_name%>
       <%end  %>
   <% end %>
 
