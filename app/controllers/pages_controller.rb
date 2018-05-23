@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
 
-skip_before_action :authenticate_user!, only: [:home, :entrepreneurs]
+skip_before_action :authenticate_user!, only: [:home, :entrepreneurs, :advisors, :packages]
 
   def home
   end
@@ -10,5 +10,11 @@ skip_before_action :authenticate_user!, only: [:home, :entrepreneurs]
   end
 
   def entrepreneurs
+  end
+
+  def advisors
+  end
+
+  def packages
   end
 end

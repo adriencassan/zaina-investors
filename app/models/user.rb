@@ -12,4 +12,21 @@ class User < ApplicationRecord
     @advisors = User.where(role: "Advisor")
    end
 
+  def is_admin?
+    self.role == "Zaina"
+  end
+
+  def is_entrepreneur?
+    self.role == "Entrepreneur"
+  end
+
+  def is_advisor?
+    self.role == "Advisor"
+  end
+
+  def has_projectmember?
+     unless (self.projectmembers.nil? || self.projectmembers.empty?)
+      end
+  end
+
 end

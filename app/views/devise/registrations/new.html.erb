@@ -6,19 +6,19 @@
   <h2>Sign up</h2>
 
   <div class="form-inputs">
+    <%= f.input :role, collection: ["Advisor","Entrepreneur"]%>
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
-
     <%= f.input :first_name, required: true %>
     <%= f.input :last_name, required: true %>
     <%= f.input :company, required: true %>
     <%= f.input :function, required: true %>
   </div>
-
  <div class="actions">
     <%= f.submit "Next" %>
   </div>
-<% end %>
+
 </div>
 
+<% end %>

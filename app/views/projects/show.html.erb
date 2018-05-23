@@ -3,8 +3,8 @@
   <div class="list-inline project_intro">
   <li><h3 >Project "<%= @project.project_name%>"</h3></li>
   <li>
-  <% if current_user.role == "Zaina" %>
-     <a href="<%= projects_path %> " class="btn btn-primaryn back_button">Chose another project</a>
+  <% if current_user.is_admin? %>
+     <a href="<%= projects_path %> " class="btn btn-primary back_button">Chose another project</a>
      <%end %>
   </li>
   </div>
@@ -16,10 +16,10 @@
     <h2>Description:</h2>
       <p> <%= @project.description %></p>
     <h2>Advisor:</h2>
-      <p> <% if Projectmember.where(project_id: @project.id).nil? || Projectmember.where(project_id: @project.id).empty? %>
-              <% if current_user.role == "Zaina" %>
+      <p> <% if @project.has_projectmember? %>
+              <% if current_user.is_admin? %>
               <%= link_to 'Choose advisor for this project', new_project_projectmember_path(@project), class: "btn btn-primary btn-lg", style:"font-size: 25px"%>
-              <% elsif current_user.role == "Entrepreneur" %>
+              <% elsif current_user.is_entrepreneur? %>
               <%= "The most relevant advisor for your project will be suggested soon by Zaina team" %>
               <%end  %>
              <%else%>
@@ -37,39 +37,39 @@
 <div class="tabs">
   <a class="tab active" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
     <h3>Message center</h3>
-    <% if current_user.role == "Zaina"%>
+    <% if current_user.is_admin?%>
       <p> Deal team </p>
     <% elsif %>
       <% current_user.role == "Advisor" %>
       <p> Deal team</p>
     <% elsif %>
-      <% current_user.role == "Entrepreneur" %>
+      <% current_user.is_entrepreneur? %>
       <p> Deal team </p>
     <% end%>
   </a>
 
   <a class="tab" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
     <h3> Company </h3>
-      <% if current_user.role == "Zaina"%>
+      <% if current_user.is_admin?%>
         <p> Detailed profile </p>
       <% elsif %>
         <% current_user.role == "Advisor" %>
         <p>Detailed profile</p>
       <% else %>
-        <% current_user.role == "Entrepreneur" %>
+        <% current_user.is_entrepreneur? %>
         <p>Detailed profile</p>
     <% end%>
   </a>
 
   <a class="tab" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
     <h3>Investors follow-up</h3>
-      <% if current_user.role == "Zaina"%>
+      <% if current_user.is_admin?%>
         <p> Live feed </p>
       <% elsif %>
         <% current_user.role == "Advisor" %>
         <p>Live feed</p>
       <% else %>
-        <% current_user.role == "Entrepreneur" %>
+        <% current_user.is_entrepreneur? %>
         <p>Live feed</p>
     <% end%>
   </a>
@@ -77,13 +77,13 @@
 
   <a class="tab" href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">
     <h3>Database</h3>
-      <% if current_user.role == "Zaina"%>
+      <% if current_user.is_admin?%>
         <p> Investors universe </p>
       <% elsif %>
         <% current_user.role == "Advisor" %>
         <p> Investors universe </p>
       <% else %>
-        <% current_user.role == "Entrepreneur" %>
+        <% current_user.is_entrepreneur? %>
         <p>Investors universe</p>
     <% end%>
   </a>
@@ -97,10 +97,10 @@
   <% if current_user.role == "Zaina"%>
     <a class="tab" href="#tab6" aria-controls="tab6" role="tab" data-toggle="tab">
       <h3>Internal message center</h3>
-        <% if current_user.role == "Zaina"%>
+        <% if current_user.is_admin?%>
           <p> with Advisor </p>
         <% else %>
-          <% current_user.role == "Advisor" %>
+          <% current_user.is_entrepreneur? %>
           <p> with Zaina </p>
         <% end%>
     </a>

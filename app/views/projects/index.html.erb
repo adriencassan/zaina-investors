@@ -2,17 +2,24 @@
 <div class="container text-center input">
 <!-- Single button -->
   <div class="btn-group">
+
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Chose the project you want to work on <span class="caret"></span>
     </button>
+
     <ul class="dropdown-menu">
-      <%  @projects.each do |project|%>
-      <li> <%= link_to project.project_name, project_path(project), class: "dropdown-item" %></li>
-      <% end %>
+      <% if current_user.is_admin?  %>
+        <% @projects.each do |project|%>
+          <li> <%= link_to project.project_name, project_path(project), class: "dropdown-item" %></li>
+        <% end %>
+      <% elsif%>
+          <% current_user.is_advisor? %>
+            <li>
+              <%= link_to Project.find_by(id:current_user.projectmembers.first.project_id).project_name, project_path(Project.find_by(id:current_user.projectmembers.first.project_id)), class: "dropdown-item" %></li>
+       <%end  %>
     </ul>
   </div>
 </div>
-
 
 
 <div class="tabs">

@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
 
-before_action :find_project, only: [:show, :edit, :update, :destroy]
+  before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def index
     @projects = policy_scope(Project)
     @project_names = Project.project_names
+
+
   end
 
 
