@@ -12,10 +12,13 @@
         <% @projects.each do |project|%>
           <li> <%= link_to project.project_name, project_path(project), class: "dropdown-item" %></li>
         <% end %>
-      <% elsif%>
-          <% current_user.is_advisor? %>
+      <% elsif current_user.is_advisor? %>
+          <% if current_user.has_projectmember? %>
             <li>
               <%= link_to Project.find_by(id:current_user.projectmembers.first.project_id).project_name, project_path(Project.find_by(id:current_user.projectmembers.first.project_id)), class: "dropdown-item" %></li>
+          <%else%>
+              <%= link_to "no project assigned yet", class: "dropdown-item" %></li>
+          <%end  %>
        <%end  %>
     </ul>
   </div>
