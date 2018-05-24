@@ -4,6 +4,7 @@ class ProjectmembersController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @projectmember = Projectmember.new
+    @role = params[:role]
     authorize @projectmember
   end
 
@@ -20,8 +21,27 @@ class ProjectmembersController < ApplicationController
     end
   end
 
+  def edit
+    @project = Project.find(params[:project_id])
+    @projectmember = Projectmember.find(params[:id])
+    @role = params[:role]
+    authorize @projectmember
+  end
 
-private
+
+  def update
+    @project = Project.find(params[:project_id])
+    @projectmember = @project.projectmembers.first
+    @projectmember.project = @project
+    authorize @projectmember
+    if @projectmember.update(projectmember_params)
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
+  end
+
+  private
 
   # def find_projectmember
   #   @project = Project.find(user: current_user)

@@ -3,7 +3,7 @@
   <%= simple_form_for [@project, @projectmember] do |f| %>
     <%= f.error_notification %>
     <div class="container text-center input">
-      <h2>Choose member</h2>
+      <h2>Choose member </h2>
       <br>
         <%= f.input :user_id, collection: User.where(role: @role), :label_method => :email %>
       <br>

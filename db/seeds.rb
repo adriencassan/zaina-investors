@@ -8,7 +8,7 @@
 
 # Users / Zaina
 
-user = User.new(email: "a@a.a", password: "password", role: "Zaina")
+user = User.new(email: "a@a.a", password: "password", role: "Zaina", admin: true)
 user.save!
 
 user = User.new(email: "b@b.b", password: "password", role: "Zaina")

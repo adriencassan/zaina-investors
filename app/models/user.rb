@@ -7,9 +7,14 @@ class User < ApplicationRecord
   has_many :projectmembers
   has_many :projects
 
+  after_create :send_welcome_email
 
    def self.advisor
     @advisors = User.where(role: "Advisor")
+   end
+
+    def self.zaina
+    @zainas = User.where(role: "Zaina")
    end
 
   def is_admin?
@@ -27,6 +32,12 @@ class User < ApplicationRecord
   def has_projectmember?
      unless (self.projectmembers.nil? || self.projectmembers.empty?)
       end
+  end
+
+private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 
 end
