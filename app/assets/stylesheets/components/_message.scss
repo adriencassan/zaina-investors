@@ -1,11 +1,12 @@
 .messages {
   padding: 10px;
+   overflow-y: scroll;
 }
 
 .message {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
 }
 .message:last-child {

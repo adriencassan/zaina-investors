@@ -1,6 +1,8 @@
 <div class="tab_content">
   <p style="text-align: center"> !!!! Message center between Entrepreneur, Advisor and Zaina to be implemented !!!</p>
 
+   <%= render 'projectmessages/form', project: @project, user: @user, projectmessage: @projectmessage %>
+
   <div class="messages">
     <% messages.each do |message| %>
 
@@ -12,7 +14,7 @@
         <p><%= message.date %></p>
       </div>
       <div class="message-body">
-        <p><strong>Object</strong></p>
+      <!--   <p><strong>Object</strong></p> -->
         <p>
           <%= message.message %>
         </p>
