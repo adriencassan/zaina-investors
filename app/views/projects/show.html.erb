@@ -113,7 +113,7 @@
 
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="tab1">
-      <%= render 'projects/tabs/tab1' %>
+      <%= render 'projects/tabs/tab1', messages: @project.projectmessages %>
     </div>
     <div role="tabpanel" class="tab-pane" id="tab2">
       <%= render 'projects/tabs/tab2' %>

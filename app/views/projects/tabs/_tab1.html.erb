@@ -1,3 +1,25 @@
 <div class="tab_content">
-<p style="text-align: center"> !!!! Message center between Entrepreneur, Advisor and Zaina to be implemented !!!</p>
+  <p style="text-align: center"> !!!! Message center between Entrepreneur, Advisor and Zaina to be implemented !!!</p>
+
+  <div class="messages">
+    <% messages.each do |message| %>
+
+
+    <div class="message">
+      <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+      <div class="message-name">
+        <h3><%= message.user.full_name%></h3>
+        <p><%= message.date %></p>
+      </div>
+      <div class="message-body">
+        <p><strong>Object</strong></p>
+        <p>
+          <%= message.message %>
+        </p>
+      </div>
+    </div>
+
+
+    <% end %>
+  </div>
 </div>
