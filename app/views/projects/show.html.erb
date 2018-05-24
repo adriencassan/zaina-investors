@@ -51,7 +51,7 @@
       <% else %>
         <p> <% if current_user.is_admin? %>
         <%= link_to 'Assign a Zaina member', new_project_projectmember_path(@project,role:'Zaina'), class:"navbar-wagon-link link"%>
-        <% elsif current_user.is_entrepreneur? %>
+        <% elsif  current_user.is_entrepreneur? %>
           <%= "A member from Zaina team will be assigned to your project" %>
         <%end  %>
         </p>

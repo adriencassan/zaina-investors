@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :projectmembers
   has_many :projects
+  has_one :profile
 
   after_create :send_welcome_email
 
@@ -16,7 +17,7 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-  
+
    def self.zaina
     @zainas = User.where(role: "Zaina")
    end
