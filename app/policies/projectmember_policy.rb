@@ -1,7 +1,7 @@
 class ProjectmemberPolicy < ApplicationPolicy
  class Scope < Scope #index
     def resolve
-      Projectmember.all #can  be .where(user = ...)
+      scope.all #can  be .where(user = ...)
     end
   end
 
