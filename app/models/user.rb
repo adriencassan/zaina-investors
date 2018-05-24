@@ -12,6 +12,10 @@ class User < ApplicationRecord
     @advisors = User.where(role: "Advisor")
    end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def is_admin?
     self.role == "Zaina"
   end
