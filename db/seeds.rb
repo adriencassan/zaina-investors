@@ -43,8 +43,8 @@ user = User.new(email: "ae@e.e", password: "password", role: "Advisor")
 user.save!
 
 # Users / Entrepreneurs
-user = User.new(email: "ea@a.a", password: "password", role: "Entrepreneur")
-user.save!
+userE = User.new(email: "ea@a.a", password: "password", role: "Entrepreneur")
+userE.save!
 
 user = User.new(email: "eb@b.b", password: "password", role: "Entrepreneur")
 user.save!
@@ -61,7 +61,15 @@ user.save!
 # projects
 
 project = Project.new(project_name: "lucas project")
+project.user = userE
 project.save!
+
+
+5.times do
+
+projectmessage = Projectmessage.new(message: "my test message", project: Project.first, date: Date.today, user: User.all.sample)
+projectmessage.save!
+end
 
 
 # create_table "users", force: :cascade do |t|

@@ -31,6 +31,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @user = current_user
+    @projectmessage = Projectmessage.new
     authorize @project
   end
 

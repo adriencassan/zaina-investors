@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
+    
+    resources :projectmessages, only: [ :new, :create ]
+    
     resources :projectmembers, only: [ :new, :create, :edit, :update]
+
   end
 
 

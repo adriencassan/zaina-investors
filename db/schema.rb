@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517072914) do
+ActiveRecord::Schema.define(version: 20180524010925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20180517072914) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_projectmembers_on_project_id"
     t.index ["user_id"], name: "index_projectmembers_on_user_id"
+  end
+
+  create_table "projectmessages", force: :cascade do |t|
+    t.date "date"
+    t.text "message"
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_projectmessages_on_project_id"
+    t.index ["user_id"], name: "index_projectmessages_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -61,5 +72,7 @@ ActiveRecord::Schema.define(version: 20180517072914) do
 
   add_foreign_key "projectmembers", "projects"
   add_foreign_key "projectmembers", "users"
+  add_foreign_key "projectmessages", "projects"
+  add_foreign_key "projectmessages", "users"
   add_foreign_key "projects", "users"
 end
