@@ -26,7 +26,9 @@
           <p><a class="link" data-toggle="modal" data-target="#myModal">Check advisor's profile</a><br>
           <%= link_to 'Assign another advisor',edit_project_projectmember_path(@project, role: 'Advisor'), class:"navbar-wagon-link link"%></p>
             <%elsif current_user.is_entrepreneur? %>
-              <%= @project.advisor.first.email %><br>
+               <%@project.advisors.each do |advisor|%>
+          <p style="margin: 0px"> <%= advisor.email %></p>
+          <%end%> <br>
               <a style="font-weight: bold" class="link" data-toggle="modal" data-target="#myModal">Check advisor's profile and confirm call planning</a>
 
         <%end%>
