@@ -58,6 +58,10 @@ user.save!
 user = User.new(email: "ee@e.e", password: "password", role: "Entrepreneur")
 user.save!
 
+# projects
+
+project = Project.new(project_name: "lucas project")
+project.save!
 
 
 # create_table "users", force: :cascade do |t|
