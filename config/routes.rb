@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :projectmembers, only: [ :new, :create ]
+
+    resources :projectmessages, only: [ :new, :create ]
   end
 
   get "/pages/entrepreneurs" => "pages#entrepreneurs"
