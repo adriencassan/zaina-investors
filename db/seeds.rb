@@ -59,6 +59,8 @@ user = User.new(email: "ee@e.e", password: "password", role: "Entrepreneur")
 user.save!
 
 
+p
+
 
 # create_table "users", force: :cascade do |t|
 #     t.string "email", default: "", null: false

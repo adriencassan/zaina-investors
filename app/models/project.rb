@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :projectmembers
+  has_many :projectmessages
 
 
   def self.project_names
