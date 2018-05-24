@@ -18,14 +18,15 @@
     <h2>Advisor:</h2>
       <p> <% if @project.has_projectmember? %>
               <% if current_user.is_admin? %>
-              <%= link_to 'Choose advisor for this project', new_project_projectmember_path(@project), class: "btn btn-primary btn-lg", style:"font-size: 25px"%>
+              <%= link_to 'Choose an advisor for this project', new_project_projectmember_path(@project), class:"navbar-wagon-link link"%>
               <% elsif current_user.is_entrepreneur? %>
               <%= "The most relevant advisor for your project will be suggested soon by Zaina team" %>
               <%end  %>
              <%else%>
             <%= User.find((Projectmember.find_by(project_id: @project.id)).user_id).email %>
+            <a class="navbar-wagon-link link" data-toggle="modal" data-target="#myModal">Check advisor's profile and confirm call planning</a>
           <%end%> </p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Show profile</button>
+
   </div>
 
   <div class="box_header col-md-6">
