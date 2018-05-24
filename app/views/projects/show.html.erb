@@ -1,14 +1,10 @@
 
-<div >
-  <div class="list-inline project_intro">
-  <li><h3 >Project "<%= @project.project_name%>"</h3></li>
-  <li>
+  <div class="project_intro">
+  <h3 style="padding-top: 25px">Project "<%= @project.project_name%>"</h3>
   <% if current_user.is_admin? %>
-     <a href="<%= projects_path %> " class="btn btn-primary back_button">Chose another project</a>
+     <a href="<%= projects_path %> " class="btn btn-primary back_button" style="padding: 0px">Chose another project</a>
      <%end %>
-  </li>
   </div>
-</div>
 
 <div class="show_header ">
   <div class="box_header col-md-6" >
@@ -53,11 +49,12 @@
         <p><%= link_to 'Assign another Zaina member', edit_project_projectmember_path(@project, role: 'Zaina'), class:"navbar-wagon-link link"%></p>
         <% end  %>
       <% else %>
-        <% if current_user.is_admin? %>
+        <p> <% if current_user.is_admin? %>
         <%= link_to 'Assign a Zaina member', new_project_projectmember_path(@project,role:'Zaina'), class:"navbar-wagon-link link"%>
         <% elsif current_user.is_entrepreneur? %>
           <%= "A member from Zaina team will be assigned to your project" %>
         <%end  %>
+        </p>
       <%end  %>
 
   </div>
