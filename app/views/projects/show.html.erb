@@ -25,6 +25,7 @@
              <%else%>
             <%= User.find((Projectmember.find_by(project_id: @project.id)).user_id).email %>
           <%end%> </p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Show profile</button>
   </div>
 
   <div class="box_header col-md-6">
@@ -129,4 +130,10 @@
       <%= render 'projects/tabs/tab6' %>
     </div>
   </div>
+
+
+<!-- Modal Profil Advisor -->
+<div id="myModal" class="modal fade " tabindex="-1">
+
+</div>
 
