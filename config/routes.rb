@@ -14,23 +14,15 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, only: [:show, :new, :create, :edit, :update] do
-
-
       get "resume_fullpage", to: "profiles#resume_fullpage"
-
-
-
-
   end
 
   resources :projects do
-
     resources :projectmessages, only: [ :new, :create ]
-
     resources :projectmembers, only: [ :new, :create, :edit, :update]
-
   end
 
+  resources :companies, only: [:show, :new, :create, :edit, :update]
 
 
   get "/pages/entrepreneurs" => "pages#entrepreneurs"

@@ -2,7 +2,13 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :projectmembers
   has_many :projectmessages
+  has_one :company
 
+  after_create :build_company
+
+  def build_company
+    Company.create(project_id: self.id)
+  end
 
   def self.project_names
     @project_names = []

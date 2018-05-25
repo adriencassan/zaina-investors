@@ -18,10 +18,8 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by(user_id: current_user.id)
     if @profile.update(profile_params)
-      flash[:notices] = ["Your profile was successfully updated"]
       render 'show'
     else
-      flash[:notices] = ["Your profile could not be updated"]
       render 'edit'
     end
     authorize @profile

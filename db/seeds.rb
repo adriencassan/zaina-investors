@@ -15,7 +15,7 @@ profile = Profile.new(user_id: "1", first_name: zaina1.first_name, last_name: za
 profile.save!
 
 zaina2 = User.new(email: "johnzaina@a.a", password: "password", role: "Zaina", first_name:"johnzaina", last_name:"smithzaina" ,admin: true)
-zaina1.save!
+zaina2.save!
 
 profile = Profile.new(user_id: "2", first_name: zaina2.first_name, last_name: zaina2.last_name)
 profile.save!
@@ -40,6 +40,10 @@ profile.save!
 project = Project.new(project_name: "lucas project")
 project.user = entrepreneur1
 project.save!
+
+# companies
+company = Company.new(project_id: "1")
+company.save!
 
 #projectmembers (of lucas project)
 projectmember = Projectmember.new(user_id: 1, project_id: 1)

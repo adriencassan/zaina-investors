@@ -1,0 +1,61 @@
+<%@company = @project.company  %>
+<h3>Your company profile :</h3>
+
+<%= link_to 'Edit my company profile',edit_company_path(@project.company, project_id: @project.id), class:"navbar-wagon-link link", data-toggle:"modal", data-target:"#editcompanyModal"%>
+
+<!-- <p><a class="link" data-toggle="modal" data-target="#editcompanyModal"> Edit my company profile</a> </p> -->
+
+<div id="editcompanyModal" class="modal fade " tabindex="-1">
+  <%=  render "edit", company: @project.company  %>
+</div>
+
+<p> Sector: </p>
+<p> <%= @company.sector %> </p>
+
+<p> Founded in: </p>
+<p> <%= @company.creation_year  %></p>
+
+<p> Describe your activity (products and services): </p>
+<p> <%= @company.activity  %></p>
+
+<p> Describe your business model: </p>
+<p> <%= @company.business_model %></p>
+
+<p> Who are your clients ? </p>
+<p> <%= @company.client_nature %></p>
+
+<p> Do you generate the majority of your revenues with only few clients ? </p>
+<p> <%= @company.top_clients_weight %></p>
+
+<p> How many employees do you have ? </p>
+<p> <%= @company.number_employee %></p>
+
+<p> Describe your business model: </p>
+<p> <%= @company.business_model %></p>
+
+<p> Describe your top management team: </p>
+<p> <%= @company.top_team %></p>
+
+<p> What is the nature of your revenues ? (Recurring?) </p>
+<p> <%= @company.revenues_nature%></p>
+
+<p> What is your gross margin ? (if relevant) </p>
+<p> <%= @company.gross_margin %></p>
+
+<p> Describe your operating profit ? </p>
+<p> <%= @company.ebitda %></p>
+
+<p> What is your competitive advantage ? </p>
+<p> <%= @company.competitive_advantage %></p>
+
+<p> What are the main risks you identify for your business ? </p>
+<p> <%= @company.risk %></p>
+
+<p> Could you tell us more about your development strategy ? </p>
+<p> <%= @company.development_plan %></p>
+
+<p> Your updloaded files : </p>
+
+
+
+
