@@ -1,12 +1,11 @@
-<%@company = @project.company  %>
+<% @company = @project.company  %>
 <h3>Your company profile :</h3>
 
-<%= link_to 'Edit my company profile',edit_company_path(@project.company, project_id: @project.id), class:"navbar-wagon-link link", data-toggle:"modal", data-target:"#editcompanyModal"%>
 
-<!-- <p><a class="link" data-toggle="modal" data-target="#editcompanyModal"> Edit my company profile</a> </p> -->
+<p><a class="link" data-toggle="modal" data-target="#editcompanyModal"> Edit my company profile</a> </p>
 
 <div id="editcompanyModal" class="modal fade " tabindex="-1">
-  <%=  render "edit", company: @project.company  %>
+  <%=  render "companies/edit", company: @project.company  %>
 </div>
 
 <p> Sector: </p>
