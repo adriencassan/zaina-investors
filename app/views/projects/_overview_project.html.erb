@@ -1,1 +1,83 @@
 
+<h1 >Overview</h1>
+  <h2>Description:</h2>
+    <p> <%= @project.description %></p>
+
+  <h2>Advisor(s):</h2>
+
+    <%if @project.has_advisormember? %>
+      <% @project.advisors.each do |advisor|%>
+          <p> <%= advisor.email %> <br>
+         <a style="font-weight: bold" class="link" data-toggle="modal" data-target="#myModal"> Check his profile</a> </p>
+          <div id="myModal" class="modal fade " tabindex="-1">
+            <%=  render "profiles/profile", profile: advisor.profile  %>
+          </div>
+        <%end%>
+      <%if current_user.is_admin? %>
+        <p> <%= link_to 'Assign a different advisor',edit_project_projectmember_path(@project, role: 'Advisor'), class:"navbar-wagon-link link"%></p>
+      <%end%>
+
+    <%else%>
+
+      <% if current_user.is_admin? %>
+        <p><%= link_to 'Assign an advisor for this project', new_project_projectmember_path(@project, role: 'Advisor'), class:"navbar-wagon-link link"%> </p>
+      <% elsif current_user.is_entrepreneur? %>
+        <p><%= "The most relevant advisor for your project will be suggested soon" %></p>
+      <%end %>
+
+    <%end%>
+
+  <h2>Zaina member(s):</h2>
+
+    <%if @project.has_zainamember? %>
+
+      <%@project.zainas.each do |zaina|%>
+        <p><%= zaina.email %></p>
+       <%end%>
+
+        <%if current_user.is_admin? %>
+          <p><%= link_to 'Assign a different Zaina member', edit_project_projectmember_path(@project, role: 'Zaina'), class:"navbar-wagon-link link"%></p>
+        <% end  %>
+
+    <% else %>
+
+      <% if current_user.is_admin? %>
+        <p> <%= link_to 'Assign a Zaina member', new_project_projectmember_path(@project,role:'Zaina'), class:"navbar-wagon-link link"%></p>
+      <% elsif  current_user.is_entrepreneur? %>
+        <p><%= "A member from Zaina team will be assigned to your project" %></p>
+      <%end  %>
+
+    <%end  %>
+
+
+  <% if  current_user.is_entrepreneur? %>
+
+    <a style="font-weight: bold" class="btn btn-primary" id="small-btn" style="color: white; font-size: 14px; margin-left: 20px" data-toggle="modal" data-target="#confirmedcallModal"> Confirm call planning</a>
+
+  <% end %>
+
+
+
+<!-- Modal Profil Advisor -->
+
+<div id="confirmedcallModal" class="modal fade " tabindex="-1">
+  <%=  render "call_confirmation_alert"  %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

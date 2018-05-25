@@ -1,30 +1,31 @@
 
 <%= cl_image_tag @profile.photo, class:"avatar", height: 300, width: 400, crop: :fill %>
-
 <h2> First Name: </h2>
-<p> @profile.first_name </p>
+<p> <%= @profile.first_name %> </p>
 
 <h2> Last Name: </h2>
-<p> @profile.first_name </p>
+<p> <%= @profile.last_name  %></p>
 
 <h2> Email: </h2>
-<p> @profile.full_name </p>
+<p> <%= @profile.email %></p>
 
 <h2> Background: </h2>
-<p> @profile.full_name </p>
+<p> <%= @profile.background %></p>
 
-
+  <%= cl_image_tag @profile.resume, height: 300, width: 400, crop: :fill %>
 <a class="navbar-wagon-link link" data-toggle="modal" data-target="#myModal">Click here to see full resume</a> <br>
 
 <% if current_user.is_entrepreneur? %>
   <%= link_to 'Back to my project',project_path(current_user.projects.first), class:"navbar-wagon-link link"%>
-<%elsif current_user.is_admin? || current_user.is_advisor%>
+<%elsif current_user.is_admin? || current_user.is_advisor?  %>
   <%= link_to 'Back to projects index',projects_path, class:"navbar-wagon-link link"%>
 <%end %>
+<br>
+<%= link_to 'Edit my profile',edit_profile_path(@profile), class:"navbar-wagon-link link"%>
 
 
 
-<!-- Modal Profil Advisor -->
+<!-- Modal resume -->
 <div id="myModal" class="modal fade " tabindex="-1">
  <div class="modal-dialog">
   <div class="modal-content">
@@ -33,7 +34,7 @@
       <h4 class="modal-title">Resume</h4>
     </div>
     <div class="modal-body">
-      <%= cl_image_tag @profile.resume, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag("acn1b7ry7pd4i0acjplc.pdf") %>
     </div>
     <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -5,14 +5,11 @@ class ProjectsController < ApplicationController
   def index
     @projects = policy_scope(Project)
     @project_names = Project.project_names
-
-
   end
 
-
-  def show
+  def new
     @project = Project.new(user: current_user)
-    # @advisors = User.where(role: "advisor")
+    #@project.save
     authorize @project
   end
 
@@ -27,7 +24,6 @@ class ProjectsController < ApplicationController
       render :new
     end
   end
-
 
   def show
     @project = Project.find(params[:id])

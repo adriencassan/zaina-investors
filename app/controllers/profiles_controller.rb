@@ -1,8 +1,7 @@
 class ProfilesController < ApplicationController
 
-
   def show
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile
     authorize @profile
   end
 
@@ -13,7 +12,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find_by(user_id: current_user.id)
-     authorize @profile
+    authorize @profile
   end
 
   def update
@@ -28,10 +27,16 @@ class ProfilesController < ApplicationController
     authorize @profile
   end
 
+  def resume_fullpage
+    @profile = Profile.find(params[:profile_id])
+    render 'resume_fullpage'
+    authorize @profile
+  end
+
 private
 
   def profile_params
-  params.require(:profile).permit(:user_id)
+  params.require(:profile).permit(:user_id, :first_name, :last_name, :resume)
   end
 
 end

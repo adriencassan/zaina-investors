@@ -1,0 +1,26 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close btn-close" data-dismiss="modal" aria-hidden="true" id="btn-close">&times;</button>
+      <h4 class="modal-title">That's great news!</h4>
+    </div>
+    <div class="modal-body">
+
+<h2> Next step: </h2>
+<p>We will schedule the call now and come back to you soon with some slots !</p>
+<h2> Important: </h2>
+<p> Your advisor and us need more information about your company and your project to have a productive call and confirm the feasability of your project </p>
+<p>So please fill the form in the company profile tab and submit it as soon as you can </p>
+
+<h2>  Confidentiality: </h2>
+<p> If you want to be more confortable regarding confidentiality, you can sign the suggested confidentiality agreement available in the Documents tab. We will countersign it and send it back to you. </p>
+
+<%= link_to "Sign our confidentiality agreement in Documents tab",project_path(@project), class:"navbar-wagon-link link"%>
+
+
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-primary" href="<%= project_path(@project) %> ">Go to company profile</button>
+    </div>
+  </div>
+</div>

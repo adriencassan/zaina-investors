@@ -8,67 +8,41 @@
 
 # Users / Zaina
 
-user = User.new(email: "a@a.a", password: "password", role: "Zaina", admin: true)
-user.save!
+zaina1 = User.new(email: "aminazaina@a.a", password: "password", role: "Zaina", first_name:"aminazaina", last_name:"sagouzaina" ,admin: true)
+zaina1.save!
 
-user = User.new(email: "b@b.b", password: "password", role: "Zaina")
-user.save!
+profile = Profile.new(user_id: "1", first_name: zaina1.first_name, last_name: zaina1.last_name)
+profile.save!
 
-user = User.new(email: "c@c.c", password: "password", role: "Zaina")
-user.save!
+zaina2 = User.new(email: "johnzaina@a.a", password: "password", role: "Zaina", first_name:"johnzaina", last_name:"smithzaina" ,admin: true)
+zaina1.save!
 
-user = User.new(email: "d@d.d", password: "password", role: "Zaina")
-user.save!
-
-user = User.new(email: "e@e.e", password: "password", role: "Zaina")
-user.save!
-
-# profiles / Zaina
-
-profile = Profile.new(user_id: "1")
+profile = Profile.new(user_id: "2", first_name: zaina2.first_name, last_name: zaina2.last_name)
 profile.save!
 
 # Users / Advisors
 
-user = User.new(email: "aa@a.a", password: "password", role: "Advisor")
-user.save!
+advisor1 = User.new(email: "aminaadvisor@a.a", password: "password", role: "Advisor", first_name:"aminaadvisor", last_name:"sagouadvisor")
+advisor1.save!
 
-user = User.new(email: "ab@b.b", password: "password", role: "Advisor")
-user.save!
+profile = Profile.new(user_id: "2", first_name: advisor1.first_name, last_name: advisor1.last_name)
+profile.save!
 
-user = User.new(email: "ac@c.c", password: "password", role: "Advisor")
-user.save!
+#Users / Entrepreneurs
+entrepreneur1 = User.new(email: "aminaentrepreneur@a.a", password: "password", role: "Entrepreneur", first_name:"aminaentrepreneur", last_name:"sagouentrepreneur")
+entrepreneur1.save!
 
-user = User.new(email: "ad@d.d", password: "password", role: "Advisor")
-user.save!
-
-user = User.new(email: "ae@e.e", password: "password", role: "Advisor")
-user.save!
-
-# Users / Entrepreneurs
-userE = User.new(email: "ea@a.a", password: "password", role: "Entrepreneur")
-userE.save!
-
-user = User.new(email: "eb@b.b", password: "password", role: "Entrepreneur")
-user.save!
-
-user = User.new(email: "ec@c.c", password: "password", role: "Entrepreneur")
-user.save!
-
-user = User.new(email: "ed@d.d", password: "password", role: "Entrepreneur")
-user.save!
-
-user = User.new(email: "ee@e.e", password: "password", role: "Entrepreneur")
-user.save!
+profile = Profile.new(user_id: "3", first_name: entrepeneur1.first_name, last_name: entrepreneur1.last_name)
+profile.save!
 
 # projects
 
 project = Project.new(project_name: "lucas project")
-project.user = userE
+project.user = entrepreneur1
 project.save!
 
 #projectmembers (of lucas project)
-projectmember = Projectmember.new(user_id: 6, project_id: 1)
+projectmember = Projectmember.new(user_id: 1, project_id: 1)
 projectmember.save!
 #messages
 

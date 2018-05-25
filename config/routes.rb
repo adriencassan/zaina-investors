@@ -13,7 +13,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :profiles, only: [:show, :new, :create, :edit, :update]
+  resources :profiles, only: [:show, :new, :create, :edit, :update] do
+
+
+      get "resume_fullpage", to: "profiles#resume_fullpage"
+
+
+
+
+  end
 
   resources :projects do
 
@@ -30,5 +38,7 @@ Rails.application.routes.draw do
   get "/pages/advisors" => "pages#advisors"
 
   get "/pages/packages" => "pages#packages"
+
+
 
 end

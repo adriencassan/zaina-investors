@@ -1,5 +1,5 @@
 class ProfilePolicy < ApplicationPolicy
- class Scope < Scope #index
+  class Scope < Scope #index
     def resolve
       scope.all #can  be .where(user = ...)
     end
@@ -23,6 +23,10 @@ class ProfilePolicy < ApplicationPolicy
     end
 
     def show?
+      true
+    end
+
+    def resume_fullpage?
       true
     end
 
