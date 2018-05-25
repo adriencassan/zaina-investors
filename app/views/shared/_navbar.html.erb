@@ -27,8 +27,9 @@
         <% if user_signed_in? %>
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Settings</a></li>
+          <li> <%= link_to "Profile", profile_path(current_user.profile) %> </li>
+
+          <li><a href=<%profile_path(Profile.find_by(user_id: current_user.id))%>>Settings</a></li>
         </ul>
          <%end %>
       </div>

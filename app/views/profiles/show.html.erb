@@ -1,0 +1,47 @@
+
+<%= cl_image_tag @profile.photo, class:"avatar", height: 300, width: 400, crop: :fill %>
+
+<h2> First Name: </h2>
+<p> @profile.first_name </p>
+
+<h2> Last Name: </h2>
+<p> @profile.first_name </p>
+
+<h2> Email: </h2>
+<p> @profile.full_name </p>
+
+<h2> Background: </h2>
+<p> @profile.full_name </p>
+
+
+<a class="navbar-wagon-link link" data-toggle="modal" data-target="#myModal">Click here to see full resume</a> <br>
+
+<% if current_user.is_entrepreneur? %>
+  <%= link_to 'Back to my project',project_path(current_user.projects.first), class:"navbar-wagon-link link"%>
+<%elsif current_user.is_admin? || current_user.is_advisor%>
+  <%= link_to 'Back to projects index',projects_path, class:"navbar-wagon-link link"%>
+<%end %>
+
+
+
+<!-- Modal Profil Advisor -->
+<div id="myModal" class="modal fade " tabindex="-1">
+ <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close btn-close" data-dismiss="modal" aria-hidden="true" id="btn-close">&times;</button>
+      <h4 class="modal-title">Resume</h4>
+    </div>
+    <div class="modal-body">
+      <%= cl_image_tag @profile.resume, height: 300, width: 400, crop: :fill %>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+
+
+</div>
+

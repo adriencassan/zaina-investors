@@ -23,7 +23,10 @@ user.save!
 user = User.new(email: "e@e.e", password: "password", role: "Zaina")
 user.save!
 
+# profiles / Zaina
 
+profile = Profile.new(user_id: "1")
+profile.save!
 
 # Users / Advisors
 
@@ -64,6 +67,10 @@ project = Project.new(project_name: "lucas project")
 project.user = userE
 project.save!
 
+#projectmembers (of lucas project)
+projectmember = Projectmember.new(user_id: 6, project_id: 1)
+projectmember.save!
+#messages
 
 5.times do
 

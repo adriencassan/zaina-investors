@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   end
 
 
-  def new
+  def show
     @project = Project.new(user: current_user)
     # @advisors = User.where(role: "advisor")
     authorize @project

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'profiles/profile'
 
   root to: 'pages#home'
 
@@ -9,11 +8,12 @@ Rails.application.routes.draw do
   end
 
   devise_for :users do
-    resources :profiles, only: [:new, :create, :edit, :update]
     collection do
      get "advisor", to: "users#advisor"
     end
   end
+
+  resources :profiles, only: [:show, :new, :create, :edit, :update]
 
   resources :projects do
 

@@ -5,7 +5,7 @@
     <div class="container text-center input">
       <h2>Choose member </h2>
       <br>
-        <%= f.input :user_id, collection: User.where(role: @role), :label_method => :email %>
+        <%= f.input :user_id, collection: User.where(role: @role), :label_method => :email, label: false %>
       <br>
         <%= f.submit "Submit" %>
     </div>

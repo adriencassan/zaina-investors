@@ -15,17 +15,20 @@
     <h2>Advisor(s):</h2>
       <%if @project.has_advisormember? %>
 
-         <%if current_user.is_admin? %>
+        <%if current_user.is_admin? %>
+
           <%@project.advisors.each do |advisor|%>
-          <p style="margin: 0px"> <%= advisor.email %></p>
+            <p style="margin: 0px"> <%= advisor.email %></p>
           <%end%>
           <p><a class="link" data-toggle="modal" data-target="#myModal">Check advisor's profile</a><br>
           <%= link_to 'Assign another advisor',edit_project_projectmember_path(@project, role: 'Advisor'), class:"navbar-wagon-link link"%></p>
+
             <%elsif current_user.is_entrepreneur? %>
+
                <%@project.advisors.each do |advisor|%>
-          <p style="margin: 0px"> <%= advisor.email %></p>
-          <%end%> <br>
-              <a style="font-weight: bold" class="link" data-toggle="modal" data-target="#myModal">Check advisor's profile and confirm call planning</a>
+                <%@profile = advisor.profile %>
+                <p style="margin: 0px"> <a style="font-weight: bold" class="link" data-toggle="modal" data-target="#myModal"> <%= advisor.email %> CLick and check his profile and confirm call planning</a> </p>
+            <%end%> <br>
 
         <%end%>
 
@@ -165,6 +168,6 @@
 
 <!-- Modal Profil Advisor -->
 <div id="myModal" class="modal fade " tabindex="-1">
-  <%=  render "projectmembers/profile"  %>
+  <%=  render "profiles/profile"  %>
 </div>
 

@@ -9,6 +9,11 @@ class User < ApplicationRecord
   has_one :profile
 
   after_create :send_welcome_email
+  after_create :build_profile
+
+  def build_profile
+    Profile.create(user_id: self.id)
+  end
 
    def self.advisor
     @advisors = User.where(role: "Advisor")

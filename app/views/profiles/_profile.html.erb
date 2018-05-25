@@ -1,0 +1,32 @@
+
+
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close btn-close" data-dismiss="modal" aria-hidden="true" id="btn-close">&times;</button>
+      <h4 class="modal-title">Profile</h4>
+    </div>
+    <div class="modal-body">
+
+<%= cl_image_tag @profile.photo, class:"avatar", height: 300, width: 400, crop: :fill %>
+
+<h2> First Name: </h2>
+<p> @profile.first_name </p>
+
+<h2> Last Name: </h2>
+<p> @profile.first_name </p>
+
+<h2> Email: </h2>
+<p> @profile.full_name </p>
+
+<h2> Background: </h2>
+<p> @profile.full_name </p>
+
+<%= link_to "Click here to see advisor's full resume",edit_project_projectmember_path(@project, role: 'Advisor'), class:"navbar-wagon-link link"%>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
