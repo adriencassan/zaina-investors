@@ -41,8 +41,7 @@ class User < ApplicationRecord
   end
 
   def has_projectmember?
-     unless (self.projectmembers.nil? || self.projectmembers.empty?)
-      end
+    true unless (self.projectmembers.nil? || self.projectmembers.empty?)
   end
 
 private

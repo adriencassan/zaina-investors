@@ -13,6 +13,7 @@
 <p> <%= @profile.background %></p>
 
   <%= cl_image_tag @profile.resume, height: 300, width: 400, crop: :fill %>
+
 <a class="navbar-wagon-link link" data-toggle="modal" data-target="#myModal">Click here to see full resume</a> <br>
 
 <% if current_user.is_entrepreneur? %>
@@ -34,7 +35,7 @@
       <h4 class="modal-title">Resume</h4>
     </div>
     <div class="modal-body">
-      <%= cl_image_tag("acn1b7ry7pd4i0acjplc.pdf") %>
+      <%= cl_image_tag @profile.resume, height: 300, width: 400, crop: :fill %>
     </div>
     <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   mount_uploader :photo, PhotoUploader
-  mount_uploader :resume, PhotoUploader
+  mount_uploader :resume, ResumeUploader
 
   before_create :get_email
   before_create :get_first_name
