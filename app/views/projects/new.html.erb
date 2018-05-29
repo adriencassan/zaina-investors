@@ -1,10 +1,11 @@
+<div class="container text-center sign_up_box" style="width: 600; margin-top: 50px, border-width: 3px">
 
+ <h2 class="sign_up">Tell us a few words about your project</h2>
 
 <%= simple_form_for @project do |f| %>
   <%= f.error_notification %>
-  <div class="container text-center input">
-    <h2>Tell us a few words about your project</h2>
-    <div class="form-inputs">
+
+    <div class="form-inputs sign_up_form">
       <%= f.input :project_name, required: true %>
       <%= f.input :description, required: true %>
       <%= f.input :sector, required: true %>
@@ -15,3 +16,4 @@
     </div>
   </div>
 <% end %>
+</div>

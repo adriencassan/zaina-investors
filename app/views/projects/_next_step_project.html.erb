@@ -1,0 +1,9 @@
+<h1 class="card-title">Next step</h1>
+
+<p style="text-align: center" >Once we send you our advisor suggestion and if your are satisfied:</p>
+
+<% if  current_user.is_entrepreneur? %>
+
+    <a style="font-weight: bold" class="btn btn-primary" id="small-btn" style="color: white; font-size: 14px; margin-left: 20px" data-toggle="modal" data-target="#confirmedcallModal"> Confirm call planning</a>
+
+  <% end %>

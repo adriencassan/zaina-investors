@@ -1,5 +1,5 @@
 
-<h1 >Overview</h1>
+<h1 class="card-title">Overview</h1>
   <h2>Description:</h2>
     <p> <%= @project.description %></p>
 
@@ -50,11 +50,6 @@
     <%end  %>
 
 
-  <% if  current_user.is_entrepreneur? %>
-
-    <a style="font-weight: bold" class="btn btn-primary" id="small-btn" style="color: white; font-size: 14px; margin-left: 20px" data-toggle="modal" data-target="#confirmedcallModal"> Confirm call planning</a>
-
-  <% end %>
 
 
 
