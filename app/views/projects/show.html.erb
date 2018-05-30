@@ -19,6 +19,7 @@
 
 
 <div class="tabs">
+
   <a class="tab active" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
     <h3>Message center</h3>
     <% if current_user.is_admin?%>
@@ -50,10 +51,9 @@
       <% if current_user.is_admin?%>
         <p> Live feed </p>
       <% elsif %>
-        <% current_user.role == "Advisor" %>
+        <% current_user.is_advisor? %>
         <p>Live feed</p>
       <% else %>
-        <% current_user.is_entrepreneur? %>
         <p>Live feed</p>
     <% end%>
   </a>
@@ -73,27 +73,25 @@
   </a>
 
 
-   <a class="tab" href="#tab5" aria-controls="tab5" role="tab" data-toggle="tab">
-      <h3>Documents</h3>
-    </a>
+  <a class="tab" href="#tab5" aria-controls="tab5" role="tab" data-toggle="tab">
+    <h3>Documents</h3>
+  </a>
 
-
-  <% if current_user.role == "Zaina"%>
-    <a class="tab" href="#tab6" aria-controls="tab6" role="tab" data-toggle="tab">
-      <h3>Internal message center</h3>
-        <% if current_user.is_admin?%>
-          <p> with Advisor </p>
-        <% else %>
-          <% current_user.is_entrepreneur? %>
-          <p> with Zaina </p>
-        <% end%>
-    </a>
-  <% end %>
+  <a class="tab" href="#tab6" aria-controls="tab6" role="tab" data-toggle="tab">
+    <h3>Internal message center</h3>
+      <% if current_user.is_admin?%>
+        <p> with Advisor </p>
+      <% else%>
+        <p> with Zaina </p>
+      <% end%>
+  </a>
 
 
 </div>
 
+
   <div class="tab-content">
+
     <div role="tabpanel" class="tab-pane active" id="tab1">
       <%= render 'projects/tabs/tab1', messages: @project.projectmessages %>
     </div>
@@ -112,6 +110,8 @@
       <div role="tabpanel" class="tab-pane" id="tab6">
       <%= render 'projects/tabs/tab6' %>
     </div>
+
   </div>
+
 
 

@@ -29,8 +29,6 @@ Rails.application.routes.draw do
 
   get "/pages/advisors" => "pages#advisors"
 
-  get "/pages/packages" => "pages#packages"
-
 
 
 end

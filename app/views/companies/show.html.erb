@@ -1,60 +1,65 @@
 <% @company = @project.company  %>
-<h3>Your company profile :</h3>
-
-
-<p><a class="link" data-toggle="modal" data-target="#editcompanyModal"> Edit my company profile</a> </p>
+<div class="project_intro">
+  <h3 style="font-size: 25px">Your company profile</h3>
+  <p><a class="link" data-toggle="modal" data-target="#editcompanyModal"> Edit the profile</a> </p>
+  <p><a class="btn-primary small-btn" data-toggle="modal" data-target="#editcompanyModal" style="padding: 5px 10px 5px 10px"> Send notification about profile change</a> </p>
+</div>
 
 <div id="editcompanyModal" class="modal fade " tabindex="-1">
   <%=  render "companies/edit", company: @project.company  %>
 </div>
 
-<p> Sector: </p>
-<p> <%= @company.sector %> </p>
+<div class="container text-left sign_up_box" style="width: 800px">
+<p style="margin-top: 15px; font-weight: bold"> Sector: </p> <br>
+<div style="border-width: 2px">
+  <p> <%= @company.sector %></p>
+</div>
 
-<p> Founded in: </p>
+<p style="font-weight: bold"> Founded in: </p><br>
 <p> <%= @company.creation_year  %></p>
 
-<p> Describe your activity (products and services): </p>
+<p style="font-weight: bold"> Describe your activity (products and services): </p><br>
 <p> <%= @company.activity  %></p>
 
-<p> Describe your business model: </p>
+<p style="font-weight: bold"> Describe your business model: </p><br>
 <p> <%= @company.business_model %></p>
 
-<p> Who are your clients ? </p>
+<p style="font-weight: bold"> Who are your clients ? </p><br>
 <p> <%= @company.client_nature %></p>
 
-<p> Do you generate the majority of your revenues with only few clients ? </p>
+<p style="font-weight: bold"> Do you generate the majority of your revenues with only few clients ? </p><br>
 <p> <%= @company.top_clients_weight %></p>
 
-<p> How many employees do you have ? </p>
+<p style="font-weight: bold"> How many employees do you have ? </p><br>
 <p> <%= @company.number_employee %></p>
 
-<p> Describe your business model: </p>
+<p style="font-weight: bold"> Describe your business model: </p><br>
 <p> <%= @company.business_model %></p>
 
-<p> Describe your top management team: </p>
+<p style="font-weight: bold"> Describe your top management team: </p><br>
 <p> <%= @company.top_team %></p>
 
-<p> What is the nature of your revenues ? (Recurring?) </p>
+<p style="font-weight: bold"> What is the nature of your revenues ? (Recurring?) </p><br>
 <p> <%= @company.revenues_nature%></p>
 
-<p> What is your gross margin ? (if relevant) </p>
+<p style="font-weight: bold"> What is your gross margin ? (if relevant) </p><br>
 <p> <%= @company.gross_margin %></p>
 
-<p> Describe your operating profit ? </p>
+<p style="font-weight: bold"> Describe your operating profit ? </p><br>
 <p> <%= @company.ebitda %></p>
 
-<p> What is your competitive advantage ? </p>
+<p style="font-weight: bold"> What is your competitive advantage ? </p><br>
 <p> <%= @company.competitive_advantage %></p>
 
-<p> What are the main risks you identify for your business ? </p>
+<p style="font-weight: bold"> What are the main risks you identify for your business ? </p><br>
 <p> <%= @company.risk %></p>
 
-<p> Could you tell us more about your development strategy ? </p>
+<p style="font-weight: bold"> Could you tell us more about your development strategy ? </p><br>
 <p> <%= @company.development_plan %></p>
 
-<p> Your updloaded files : </p>
+<p style="font-weight: bold"> Your updloaded files : </p><br>
 
+</div>
 
 
 

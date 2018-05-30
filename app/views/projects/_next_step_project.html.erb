@@ -1,9 +1,56 @@
-<h1 class="card-title">Next step</h1>
+<h1 class="card-title" style="margin: 25px">Next step</h1>
 
-<p style="text-align: center" >Once we send you our advisor suggestion and if your are satisfied:</p>
+<div class="step done"></div>
+
+<div class="next-step">
+
+<!-- User is entrepreneur  -->
 
 <% if  current_user.is_entrepreneur? %>
 
+<!-- no advisor yet-->
+  <% if @project.advisors.empty? %>
+
+    <p style="text-align: center" > We'll come back to you with a suggested advisor to have call with and discuss your project. You will receive an email as soon as it's done ! </p>
+
+  <% else %>
+
+<!-- advisor suggested, ask for confirmation-->
+    <p style="text-align: center" >We suggested an advisor for you. If your are satisfied please confirm we can schedule a call</p>
     <a style="font-weight: bold" class="btn btn-primary" id="small-btn" style="color: white; font-size: 14px; margin-left: 20px" data-toggle="modal" data-target="#confirmedcallModal"> Confirm call planning</a>
 
-  <% end %>
+<!-- advisor confirmed, give possibility to launch the process -->
+     <p style="text-align: center" > If you agree to work with us and your advisor, please launch the process proceeding to the paiement of a commitment fee </p>
+     <a style="font-weight: bold" class="btn btn-primary" id="small-btn" style="color: white; font-size: 14px; margin-left: 20px" data-toggle="modal" data-target="#processlaunchModal"> Launch the process!</a>
+
+  <% end  %>
+<% end %>
+
+<!-- User is zaina -->
+
+<% if  current_user.is_admin? %>
+
+  <% if @project.advisors.empty? %>
+
+    <%= link_to 'Assign an advisor for this project', new_project_projectmember_path(@project, role: 'Advisor'), class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px; font-weight: bold; align-content: center"%>
+  <% else  %>
+    <p style="text-align: center" > Once the entrepreneur confirms the advisor's profile, organise a call (entrepreneur, advisor and Zaina) </p>
+
+  <% end  %>
+<% end %>
+
+</div>
+
+
+
+<!-- Modals-->
+
+<div id="confirmedcallModal" class="modal fade " tabindex="-1">
+  <%=  render "call_confirmation_alert"  %>
+</div>
+
+<div id="processlaunchModal" class="modal fade " tabindex="-1">
+  <%=  render "packages"  %>
+</div>
+
+

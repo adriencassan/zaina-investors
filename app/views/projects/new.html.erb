@@ -6,8 +6,8 @@
   <%= f.error_notification %>
 
     <div class="form-inputs sign_up_form">
-      <%= f.input :project_name, required: true %>
-      <%= f.input :description, required: true %>
+      <%= f.input :project_name, required: true,label: "Project code name"  %>
+      <%= f.input :description, required: true, label: "Project description" %>
       <%= f.input :sector, required: true %>
     </div>
 
