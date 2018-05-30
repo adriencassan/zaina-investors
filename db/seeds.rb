@@ -32,7 +32,7 @@ profile.save!
 entrepreneur1 = User.new(email: "aminaentrepreneur@a.a", password: "password", role: "Entrepreneur", first_name:"aminaentrepreneur", last_name:"sagouentrepreneur")
 entrepreneur1.save!
 
-profile = Profile.new(user_id: "3", first_name: entrepeneur1.first_name, last_name: entrepreneur1.last_name)
+profile = Profile.new(user_id: "3", first_name: entrepreneur1.first_name, last_name: entrepreneur1.last_name)
 profile.save!
 
 
