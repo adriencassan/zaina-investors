@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   has_many :projectmembers
   has_many :projectmessages
   has_one :company
+  has_many :investors
 
   after_create :build_company
 

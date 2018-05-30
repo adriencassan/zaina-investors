@@ -1,0 +1,22 @@
+<div class="container text-center sign_up_box" style="width: 600; margin-top: 50px, border-width: 3px">
+
+ <h2 class="sign_up">New investor features</h2>
+  <% @investor = Investor.new(project_id: @project.id)  %>
+  <%= simple_form_for [@project, @investor] do |f| %>
+  <%= f.error_notification %>
+
+    <div class="form-inputs sign_up_form">
+      <%= f.input :name, required: true,label: "Investor name"  %>
+      <%= f.input :geography, label: "Investor location" %>
+       <%= f.input :nature, label: "Investor nature (Fund, Strategic, etc.)" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add to the list" %>
+    </div>
+  </div>
+<% end %>
+
+</div>
+
+
