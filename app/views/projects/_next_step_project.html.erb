@@ -18,14 +18,17 @@
 <!-- advisor suggested, ask for confirmation-->
     <p style="text-align: center" >We suggested an advisor for you. If your are satisfied please confirm we can schedule a call</p>
 
+    <%if @project.callconfirmation == true %>
+      <p id="confirmcall" style="color: green; font-size: 18px; margin-left: 20px;font-weight: bold; text-align: center" > Call confirmed ! </p>
 
+    <%else %>
 
-      <a style="font-weight: bold" id="confirmcall" style="color: grey; font-size: 14px; margin-left: 20px" data-toggle="modal" data-target="#confirmedcallModal" data-project-id="<%= @project.id %>"> Confirm call planning </a>
-
+      <a class ="btn btn-primary" id="confirmcall" style="font-size: 20px; margin: 20px; text-align: center;font-weight: bold" data-toggle="modal" data-target="#confirmedcallModal" data-project-id="<%= @project.id %>"> Confirm call planning </a>
+    <% end %>
 
 <!-- advisor confirmed, give possibility to launch the process -->
      <p style="text-align: center" > If you agree to work with us and your advisor, please launch the process proceeding to the paiement of a commitment fee </p>
-     <a style="font-weight: bold" id="launchedprocess" style="color: grey; font-size: 14px; margin-left: 20px" data-toggle="modal" data-target="#processlaunchModal"> Launch the process!</a>
+     <a class ="btn btn-primary" id="launchedprocess" style="font-size: 14px; margin: 20px; font-weight: bold" data-toggle="modal" data-target="#processlaunchModal"> Launch the process !</a>
 
   <% end  %>
 <% end %>
