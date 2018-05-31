@@ -18,7 +18,6 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:project_id])
     @company= Company.find_by(project_id: @project.id)
     if @company.update(company_params)
       render 'show'

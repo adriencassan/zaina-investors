@@ -2,28 +2,35 @@
 
 <div class="modal-dialog">
   <div class="modal-content">
+
     <div class="modal-header">
       <button type="button" class="close btn-close" data-dismiss="modal" aria-hidden="true" id="btn-close">&times;</button>
       <h4 class="modal-title">Profile</h4>
     </div>
+
     <div class="modal-body">
 
-<%= cl_image_tag profile.photo, class:"avatar", height: 300, width: 400, crop: :fill %>
+      <div class="container text-left sign_up_box" style="width: 800px, padding: 30px">
+        <%= cl_image_tag profile.photo, class:"avatar", height: 300, width: 400, crop: :fill %>
 
-<h2> First Name: </h2>
-<p> <%= profile.first_name %> </p>
+        <h2> First Name: </h2>
+        <p> <%= profile.first_name %> </p>
 
-<h2> Last Name: </h2>
-<p> <%= profile.last_name  %></p>
+        <h2> Last Name: </h2>
+        <p> <%= profile.last_name  %></p>
 
-<h2> Email: </h2>
-<p> <%= profile.email %></p>
+        <h2> Email: </h2>
+        <p> <%= profile.email %></p>
 
-<h2> Background: </h2>
-<p> <%= profile.background %></p>
-<%= link_to "Click here to see advisor's full resume", profile_resume_fullpage_path(profile), class:"navbar-wagon-link link", target: "_blank"  %>
+        <h2> Background: </h2>
+        <p> <%= profile.background %></p>
+        <%= link_to "Click here to see advisor's full resume", profile_resume_fullpage_path(profile), class:"navbar-wagon-link link", target: "_blank"  %>
+      </div>
+
     </div>
+
     <div class="modal-footer">
     </div>
+
   </div>
 </div>

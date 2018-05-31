@@ -21,9 +21,10 @@ Rails.application.routes.draw do
     resources :projectmessages, only: [ :new, :create ]
     resources :projectmembers, only: [ :new, :create, :edit, :update]
     resources :investors
+
   end
 
-  resources :companies
+resources :companies
 
 
 

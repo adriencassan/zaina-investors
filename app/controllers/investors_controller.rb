@@ -1,21 +1,20 @@
 class InvestorsController < ApplicationController
-
-def index
+  skip_after_action :verify_authorized
+  def index
     @investors = policy_scope(investor)
-
   end
 
   def new
     @project = Project.find(params[:project_id])
     @investor = Investor.new(project_id: @project.id)
-    authorize @investor
+
   end
 
   def create
     @investor = Investor.new(investor_params)
     @project = Project.find(params[:project_id])
     @investor.project = @project
-    authorize @investor
+
     if @investor.save
       redirect_to project_path(@project)
     else
@@ -25,19 +24,27 @@ def index
 
   def show
     @investor = Investor.find(params[:id])
-    authorize @investor
+
   end
 
   def edit
-    authorize @investor
+    @project = Project.find(params[:project_id])
+    @investor= Investor.find_by(project_id: @project.id)
   end
 
   def update
-    authorize @investor
+    @project = Project.find(params[:project_id])
+    @investor = Investor.find_by(project_id: @project.id)
+    @investor.project = @project
+    if @investor.update(investor_params)
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
 
   def destroy
-    authorize @investor
+
   end
 
 private

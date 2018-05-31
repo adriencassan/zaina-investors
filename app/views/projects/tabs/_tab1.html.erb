@@ -6,7 +6,7 @@
     <% messages.each do |message| %>
 
       <div class="message">
-        <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+        <img class="avatar-large" src="<%= current_user.profile.photo %>">
         <div class="message-name">
           <h3><%= message.user.full_name%></h3>
           <p><%= message.date %></p>

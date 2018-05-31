@@ -1,9 +1,8 @@
 <table id="investors-table" class="table table-striped table-bordered" style="width:100%">
 
-
-
-  <a style="font-weight: bold" class="navbar-wagon-link link" data-toggle="modal" data-target="#newinvestorModal"> Add an investor</a>
-
+<div style="margin-bottom: 15px">
+  <a style="font-weight: bold; font-size: 20px" class="navbar-wagon-link link" data-toggle="modal" data-target="#newinvestorModal"> Add an investor</a>
+</div>
 
   <thead>
     <tr>
@@ -20,7 +19,7 @@
 
   <tbody>
     <% @project.investors.each do |investor|  %>
-      <tr>
+
       <td> <%= investor.name %></td>
       <td> <%=investor.geography  %></td>
       <td> <%=investor.nature  %></td>
@@ -28,7 +27,8 @@
       <td> <%=investor.contacted  %></td>
       <td> <%=investor.nextstep  %></td>
       <td> <%=investor.comment  %></td>
-      <td> <%= link_to 'update', edit_project_investor_path(investor), class:"navbar-wagon-link link"%> </td>
+      <td> <%= link_to 'update', edit_project_investor_path(investor, project_id: @project.id), class:"navbar-wagon-link link"%>
+    </td>
       </tr>
 
     <% end  %>
