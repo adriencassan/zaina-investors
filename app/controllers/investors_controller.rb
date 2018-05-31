@@ -29,7 +29,7 @@ class InvestorsController < ApplicationController
 
   def edit
     @project = Project.find(params[:project_id])
-    @investor= Investor.find_by(project_id: @project.id)
+    @investor= Investor.find(params[:id])
   end
 
   def update

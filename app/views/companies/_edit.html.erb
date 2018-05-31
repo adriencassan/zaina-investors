@@ -8,7 +8,7 @@
       <%@company = @project.company  %>
       <p> If you want, we can sign NDA before you share these information with us. Please go to documents to find the NDA.</p>
 
-      <%= simple_form_for(@company) do |f| %>
+      <%= simple_form_for [@project, @company] do |f| %>
       <%= f.error_notification %>
         <%= f.input :sector%>
         <%= f.input :creation_year%>

@@ -1,19 +1,21 @@
   <div class="project_intro">
   <h3 style="padding-top: 25px; font-size: 25px">Project "<%= @project.project_name%>"</h3>
   <% if current_user.is_admin? %>
-     <a href="<%= projects_path %> " class="btn btn-primary back_button" style="padding: 0px">Chose another project</a>
+     <a href="<%= projects_path %> " class="btn btn-primary back_button" style="padding: 0px">Chose  another project</a>
      <%end %>
   </div>
 
 
 <div class="show_header ">
-  <div class="box_header col-md-6" >
-    <%= render 'overview_project'%>
-  </div>
 
   <div class="box_header col-md-6">
     <%= render 'next_step_project'%>
   </div>
+
+  <div class="box_header col-md-6" >
+    <%= render 'overview_project'%>
+  </div>
+
 
 </div>
 
@@ -92,7 +94,7 @@
 
   <div class="tab-content">
 
-    <div role="tabpanel" class="tab-pane active" id="tab1">
+    <div role="tabpanel" class="tab-pane" id="tab1">
       <%= render 'projects/tabs/tab1', messages: @project.projectmessages %>
     </div>
 

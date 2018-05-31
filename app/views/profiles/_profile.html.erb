@@ -1,17 +1,18 @@
 
 
 <div class="modal-dialog">
-  <div class="modal-content">
+  <div class="modal-content container text-left sign_up_box" style="width: 800px, padding: 30px" >
 
     <div class="modal-header">
       <button type="button" class="close btn-close" data-dismiss="modal" aria-hidden="true" id="btn-close">&times;</button>
-      <h4 class="modal-title">Profile</h4>
+      <h4 class="modal-title text-center">Profile</h4>
     </div>
 
     <div class="modal-body">
 
-      <div class="container text-left sign_up_box" style="width: 800px, padding: 30px">
+      <div class="text-center">
         <%= cl_image_tag profile.photo, class:"avatar", height: 300, width: 400, crop: :fill %>
+      </div>
 
         <h2> First Name: </h2>
         <p> <%= profile.first_name %> </p>
@@ -27,7 +28,7 @@
         <%= link_to "Click here to see advisor's full resume", profile_resume_fullpage_path(profile), class:"navbar-wagon-link link", target: "_blank"  %>
       </div>
 
-    </div>
+
 
     <div class="modal-footer">
     </div>

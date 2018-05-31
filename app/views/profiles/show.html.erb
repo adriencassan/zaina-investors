@@ -36,7 +36,7 @@
         <h4 class="modal-title">Resume</h4>
       </div>
       <div class="modal-body">
-        <%= cl_image_tag @profile.resume, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag @profile.resume, format: :jpg %>
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

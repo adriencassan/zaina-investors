@@ -27,7 +27,7 @@
       <td> <%=investor.contacted  %></td>
       <td> <%=investor.nextstep  %></td>
       <td> <%=investor.comment  %></td>
-      <td> <%= link_to 'update', edit_project_investor_path(investor, project_id: @project.id), class:"navbar-wagon-link link"%>
+      <td> <%= link_to 'update', edit_project_investor_path(@project, investor), class:"navbar-wagon-link link"%>
     </td>
       </tr>
 

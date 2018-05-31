@@ -8,7 +8,7 @@
     <%if @project.has_advisormember? %>
       <% @project.advisors.each do |advisor|%>
           <p> <%= advisor.full_name %> <br>
-         <a style="font-weight: bold" class="link" data-toggle="modal" data-target="#myModal"> Check his profile</a> </p>
+         <a style="font-weight: bold" class="link" data-toggle="modal" data-target="#myModal"> Check profile</a> </p>
           <div id="myModal" class="modal fade " tabindex="-1">
             <%=  render "profiles/profile", profile: advisor.profile  %>
           </div>
