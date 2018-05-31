@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
 
+  # def check_signed_in
+  #   redirect_to project_path(@project) if signed_in?
+  # end
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :company, :function, :role])

@@ -15,7 +15,14 @@
     <!-- Log in button -->
     <div style="color:#972F2A; font-size: 14px">
       <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-primary", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px" %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-secondary", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px" %>
+      <% if current_user.is_entrepreneur? %>
+        <% @project = current_user.projects.first  %>
+        <%= link_to "My project", project_path(@project), class:"btn btn-primary", id:"small-btn-green", style:"color: white; font-size: 14px; margin-left: 20px" %>
+      <% else  %>
+        <%= link_to "Projects", projects_path, class:"btn btn-primary", id:"small-btn-green", style:"color: white; font-size: 14px; margin-left: 20px" %>
+      <% end  %>
+
       <% else %>
         <a href="<%= new_user_session_path %> " class="btn btn-primary", id="small-btn" style="color: white; font-size: 14px; margin-left: 20px">Log in</a>
       <% end %>

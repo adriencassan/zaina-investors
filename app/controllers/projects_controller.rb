@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token, only: [:confirm_call]
+  skip_before_action :authenticate_user!, only: [:confirm_call]
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -41,6 +42,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    authorize @project
+  end
+
+  def confirm_call
+    @project = Project.find(params[:id])
+    @project.callconfirmation = true
+    @project.save
     authorize @project
   end
 

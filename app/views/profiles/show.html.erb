@@ -13,7 +13,8 @@
   <p> <%= @profile.email %></p>
 
   <p style="font-weight: bold"> Background: </p>
-  <p> <%= @profile.background %> <a class="navbar-wagon-link link"  data-toggle="modal" data-target="#myModal">Click here to see full resume</a></p>
+  <a href="<%=@profile.resume%>" class="navbar-wagon-item navbar-wagon-link" target="_blank">Click here to see full resume</a>
+
 
 
 <div class="text-center">

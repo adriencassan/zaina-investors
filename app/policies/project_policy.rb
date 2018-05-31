@@ -18,6 +18,10 @@ class ProjectPolicy < ApplicationPolicy
       update?
     end
 
+    def confirm_call?
+      true
+    end
+
     def update?
       is_owner_or_admin?
     end

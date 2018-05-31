@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
 
+
+
   root to: 'pages#home'
+
 
   authenticated do
     root to: 'projects#index'
@@ -18,6 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
+    member do
+      patch "confirm_call", to: "projects#confirm_call"
+    end
     resources :projectmessages, only: [ :new, :create ]
     resources :projectmembers, only: [ :new, :create, :edit, :update]
     resources :investors
