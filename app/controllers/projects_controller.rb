@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @tab = params[:tab].nil? ? "tab1" : "tab#{params[:tab]}"
     @user = current_user
     @projectmessage = Projectmessage.new
     authorize @project
