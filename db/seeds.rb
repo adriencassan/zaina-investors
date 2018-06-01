@@ -25,14 +25,14 @@ profile.save!
 advisor1 = User.new(email: "aminaadvisor@zaina.io", password: "password", role: "Advisor", first_name:"aminaadvisor", last_name:"sagouadvisor")
 advisor1.save!
 
-profile = Profile.new(user_id: "2", first_name: advisor1.first_name, last_name: advisor1.last_name)
+profile = Profile.new(user_id: "3", first_name: advisor1.first_name, last_name: advisor1.last_name)
 profile.save!
 
 #Users / Entrepreneurs
 entrepreneur1 = User.new(email: "aminaentrepreneur@zaina.io", password: "password", role: "Entrepreneur", first_name:"aminaentrepreneur", last_name:"sagouentrepreneur")
 entrepreneur1.save!
 
-profile = Profile.new(user_id: "3", first_name: entrepreneur1.first_name, last_name: entrepreneur1.last_name)
+profile = Profile.new(user_id: "4", first_name: entrepreneur1.first_name, last_name: entrepreneur1.last_name)
 profile.save!
 
 
