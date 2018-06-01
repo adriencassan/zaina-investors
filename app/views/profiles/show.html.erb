@@ -13,18 +13,21 @@
   <p> <%= @profile.email %></p>
 
   <p style="font-weight: bold"> Background: </p>
-  <a href="<%=@profile.resume%>" class="navbar-wagon-item navbar-wagon-link" target="_blank">Click here to see full resume</a>
+  <a href="<%=@profile.resume%>" class="navbar-wagon-item navbar-wagon-link" style="padding:0" target="_blank">Click here to see full resume</a>
 
 
 
 <div class="text-center">
+  <br>
+  <%= link_to 'Edit my profile',edit_profile_path(@profile), class:"navbar-wagon-link link"%><br>
+
   <% if current_user.is_entrepreneur? %>
     <%= link_to 'Back to my project',project_path(current_user.projects.first), class:"navbar-wagon-link link"%>
   <%elsif current_user.is_admin? || current_user.is_advisor?  %>
     <%= link_to 'Back to projects index',projects_path, class:"navbar-wagon-link link"%>
   <%end %>
-  <br>
-  <%= link_to 'Edit my profile',edit_profile_path(@profile), class:"navbar-wagon-link link"%>
+
+
 </div>
 
 

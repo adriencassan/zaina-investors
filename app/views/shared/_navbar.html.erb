@@ -9,9 +9,11 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <a href="" class="navbar-wagon-item navbar-wagon-link">About Zaina</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Team</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Advisors</a>
+    <%= link_to 'About Zaina', pages_about_path, class: "navbar-wagon-item navbar-wagon-link"%>
+    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">About Zaina</a> -->
+    <%= link_to 'Team', pages_teamoverview_path, class: "navbar-wagon-item navbar-wagon-link"%>
+    <%= link_to 'Advisors', pages_advisorsoverview_path, class: "navbar-wagon-item navbar-wagon-link"%>
+
     <!-- Log in button -->
     <div style="color:#972F2A; font-size: 14px">
       <% if user_signed_in? %>
@@ -31,10 +33,21 @@
     </div>
     <!-- Avatar with dropdown menu -->
 
+
+
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <% if user_signed_in? %>
-        <img src= <% current_user.profile.photo %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <% if current_user.profile.photo.url.nil?  %>
+          <%= image_tag 'profile-icon.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' }, style:"border" %>
+
+            <!-- <img src="image_path('profile-icon.png')" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
+          <% else  %>
+            <!-- <img src= <%= current_user.profile.photo %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
+          <%= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' } %>
+          <% end  %>
+
+
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li> <%= link_to "Profile", profile_path(current_user.profile) %> </li>
         </ul>

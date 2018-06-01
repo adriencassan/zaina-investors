@@ -1,5 +1,5 @@
 
-<h1 class="card-title" style="margin: 25px">Overview</h1>
+<h1 class="card-title" style="margin: 25px">Project overview</h1>
   <h2>Description:</h2>
     <p> <%= @project.description %></p>
 
@@ -27,7 +27,7 @@
 
     <%end%>
 
-  <h2>Zaina member(s):</h2>
+  <h2>Zaina project member(s):</h2>
 
     <%if @project.has_zainamember? %>
 
@@ -43,8 +43,8 @@
 
       <% if current_user.is_admin? %>
         <p> <%= link_to 'Assign a Zaina member', new_project_projectmember_path(@project,role:'Zaina'), class:"navbar-wagon-link link"%></p>
-      <% elsif  current_user.is_entrepreneur? %>
-        <p><%= "A member from Zaina team will be assigned to your project" %></p>
+      <% else %>
+        <p><%= "A member from Zaina team will be assigned to the project" %></p>
       <%end  %>
 
     <%end  %>

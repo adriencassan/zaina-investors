@@ -11,7 +11,8 @@
 <!-- no advisor yet-->
   <% if @project.advisors.empty? %>
 
-    <p style="text-align: center" > We'll come back to you with the name of an advisor to have call with and discuss your project. <br>You will receive an email as soon as it's done ! </p>
+    <p style="text-align: center; color: green" > An advisor will be suggested to you within 48 hours.
+    <br> Please check your emails ! </p>
 
   <% else %>
 
@@ -41,7 +42,7 @@
 
     <%= link_to 'Assign an advisor for this project', new_project_projectmember_path(@project, role: 'Advisor'), class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px; font-weight: bold; align-content: center"%>
   <% else  %>
-    <p style="text-align: center" > Once the entrepreneur confirms the advisor's profile, organise a call (entrepreneur, advisor and Zaina) </p>
+    <p style="text-align: center; color: green" > Waiting for call confirmation from entrepreneur </p>
 
   <% end  %>
 <% end %>

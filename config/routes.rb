@@ -30,13 +30,13 @@ Rails.application.routes.draw do
     resources :companies
   end
 
-
-
-
-
   get "/pages/entrepreneurs" => "pages#entrepreneurs"
 
   get "/pages/advisors" => "pages#advisors"
+
+  get "/pages/about" => "pages#about"
+  get "/pages/teamoverview" => "pages#teamoverview"
+  get "/pages/advisorsoverview" => "pages#advisorsoverview"
 
 
 
