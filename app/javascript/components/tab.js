@@ -3,7 +3,7 @@
 function loadNavTab() {
   document.querySelectorAll(".tab").forEach((tab) => {
     tab.addEventListener("click", (event) => {
-      document.querySelector(".active").classList.remove("active")
+      document.querySelectorAll(".active").forEach((one) => {one.classList.remove("active")})
       event.currentTarget.classList.add("active");
     });
   });
