@@ -96,7 +96,7 @@ config.webpacker.check_yarn_integrity = false
   config.action_mailer.default_url_options = { host: 'heroku', port: 3000 }
 
   config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_key: ENV['1248b8c2-23f2-4005-ad03-2664fb3518da'] }
+  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
   config.action_mailer.default_url_options = { host: "https://zaina-aminasag.herokuapp.com/" }
 
 
