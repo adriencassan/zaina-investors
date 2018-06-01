@@ -17,8 +17,10 @@
       <% if user_signed_in? %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-secondary", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px" %>
       <% if current_user.is_entrepreneur? %>
+       <% if !current_user.projects.empty?  %>
         <% @project = current_user.projects.first  %>
         <%= link_to "My project", project_path(@project), class:"btn btn-primary", id:"small-btn-green", style:"color: white; font-size: 14px; margin-left: 20px" %>
+        <% end  %>
       <% else  %>
         <%= link_to "Projects", projects_path, class:"btn btn-primary", id:"small-btn-green", style:"color: white; font-size: 14px; margin-left: 20px" %>
       <% end  %>
