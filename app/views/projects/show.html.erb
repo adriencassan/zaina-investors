@@ -22,7 +22,7 @@
 
 <div class="tabs">
 
-  <a class="tab active" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
+  <a class="tab <%= "active" if @tab == "tab1" %>" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
     <h3>Message center</h3>
     <% if current_user.is_admin?%>
       <p> Deal team </p>
@@ -35,7 +35,7 @@
     <% end%>
   </a>
 
-  <a class="tab" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
+  <a class="tab <%= "active" if @tab == "tab2" %>" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
     <h3> Company </h3>
       <% if current_user.is_admin?%>
         <p> Detailed profile </p>
@@ -48,7 +48,7 @@
     <% end%>
   </a>
 
-  <a class="tab" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
+  <a class="tab <%= "active" if @tab == "tab3" %>" aria-controls="tab3" role="tab" data-toggle="tab">
     <h3>Investors follow-up</h3>
       <% if current_user.is_admin?%>
         <p> Live feed </p>
@@ -61,7 +61,7 @@
   </a>
 
 
-  <a class="tab" href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">
+  <a class="tab <%= "active" if @tab == "tab4" %>" href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">
     <h3>Database</h3>
       <% if current_user.is_admin?%>
         <p> Investors universe </p>
@@ -75,11 +75,11 @@
   </a>
 
 
-  <a class="tab" href="#tab5" aria-controls="tab5" role="tab" data-toggle="tab">
+  <a class="tab <%= "active" if @tab == "tab5" %>" href="#tab5" aria-controls="tab5" role="tab" data-toggle="tab">
     <h3>Documents</h3>
   </a>
 
-  <a class="tab" href="#tab6" aria-controls="tab6" role="tab" data-toggle="tab">
+  <a class="tab <%= "active" if @tab == "tab6" %>" href="#tab6" aria-controls="tab6" role="tab" data-toggle="tab">
     <h3>Internal message center</h3>
       <% if current_user.is_admin?%>
         <p> with Advisor </p>
@@ -94,27 +94,27 @@
 
   <div class="tab-content">
 
-    <div role="tabpanel" class="tab-pane" id="tab1">
+    <div role="tabpanel" class="tab-pane  <%= "active" if @tab == "tab1" %>" id="tab1">
       <%= render 'projects/tabs/tab1', messages: @project.projectmessages %>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="tab2">
+    <div role="tabpanel" class="tab-pane <%= "active" if @tab == "tab2" %>" id="tab2">
       <%= render 'projects/tabs/tab2' %>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="tab3">
+    <div role="tabpanel" class="tab-pane <%= "active" if @tab == "tab3" %>" id="tab3">
        <%= render 'projects/tabs/tab3' %>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="tab4">
+    <div role="tabpanel" class="tab-pane <%= "active" if @tab == "tab4" %>" id="tab4">
       <%= render 'projects/tabs/tab4' %>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="tab5">
+    <div role="tabpanel" class="tab-pane <%= "active" if @tab == "tab5" %>" id="tab5">
       <%= render 'projects/tabs/tab5' %>
     </div>
 
-      <div role="tabpanel" class="tab-pane" id="tab6">
+      <div role="tabpanel" class="tab-pane <%= "active" if @tab == "tab6" %>" id="tab6">
       <%= render 'projects/tabs/tab6' %>
     </div>
 

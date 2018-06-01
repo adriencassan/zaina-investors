@@ -15,12 +15,12 @@
 <h2>  Confidentiality: </h2>
 <p> If you want to be more confortable regarding confidentiality, you can sign the suggested confidentiality agreement available in the Documents tab. We will countersign it and send it back to you. </p>
 
-<%= link_to "Sign our confidentiality agreement in Documents tab",project_path(@project), class:"navbar-wagon-link link"%>
+<%= link_to "Sign our confidentiality agreement in Documents tab",project_path(@project,{tab: "5"}), class:"navbar-wagon-link link"%>
 
 
     </div>
     <div class="modal-footer">
-    <button type="button" class="btn btn-primary" href="<%= project_path(@project) %> ">Go to company profile</button>
+    <%= link_to "Go to company profile",project_path(@project,{tab: "2"}), class:"btn btn-primary"%>
     </div>
   </div>
 </div>
