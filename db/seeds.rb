@@ -29,7 +29,8 @@ profile = Profile.new(user_id: "2", first_name: advisor1.first_name, last_name: 
 profile.save!
 
 #Users / Entrepreneurs
-entrepreneur1 = User.new(email: "aminaentrepreneur@zaina.io"
+entrepreneur1 = User.new(email: "aminaentrepreneur@zaina.io", password: "password", role: "Entrepreneur", first_name:"aminaentrepreneur", last_name:"sagouentrepreneur")
+entrepreneur1.save!
 
 profile = Profile.new(user_id: "3", first_name: entrepreneur1.first_name, last_name: entrepreneur1.last_name)
 profile.save!
