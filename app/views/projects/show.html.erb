@@ -48,7 +48,7 @@
     <% end%>
   </a>
 
-  <a class="tab <%= "active" if @tab == "tab3" %>" aria-controls="tab3" role="tab" data-toggle="tab">
+  <a class="tab <%= "active" if @tab == "tab3" %>" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
     <h3>Investors follow-up</h3>
       <% if current_user.is_admin?%>
         <p> Live feed </p>

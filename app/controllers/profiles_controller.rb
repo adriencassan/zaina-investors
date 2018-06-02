@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by(user_id: current_user.id)
+
     if @profile.update(profile_params)
       render 'show'
     else
@@ -34,7 +35,7 @@ class ProfilesController < ApplicationController
 private
 
   def profile_params
-  params.require(:profile).permit(:user_id, :first_name, :last_name, :resume, :resume_cache, :photo, :photo_cache)
+  params.require(:profile).permit(:background, :user_id, :first_name, :last_name, :resume, :resume_cache, :photo, :photo_cache)
   end
 
 end
