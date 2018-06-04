@@ -1,26 +1,25 @@
   <div class="project_intro">
-  <h3 style="padding-top: 25px; font-size: 25px">Project "<%= @project.project_name%>"</h3>
+  <h3 style="padding-top: 50px; font-size: 25px">Project "<%= @project.project_name%>"</h3>
   <% if current_user.is_admin? %>
      <a href="<%= projects_path %> " class="btn btn-primary back_button" style="padding: 0px">Chose  another project</a>
      <%end %>
   </div>
 
 
-<div class="show_header ">
-
-  <div class="box_header col-md-6">
-    <%= render 'next_step_project'%>
-  </div>
-
-  <div class="box_header col-md-6" >
-    <%= render 'overview_project'%>
-  </div>
-
-
-</div>
-
-
 <div class="tabs">
+
+  <a class="tab <%= "active" if @tab == "tab0" %>" href="#tab0" aria-controls="tab0" role="tab" data-toggle="tab">
+    <h3>Home</h3>
+    <% if current_user.is_admin?%>
+      <p> </p>
+    <% elsif %>
+      <% current_user.role == "Advisor" %>
+      <p> </p>
+    <% elsif %>
+      <% current_user.is_entrepreneur? %>
+      <p>  </p>
+    <% end%>
+  </a>
 
   <a class="tab <%= "active" if @tab == "tab1" %>" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
     <h3>Message center</h3>
@@ -93,6 +92,10 @@
 
 
   <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane <%= "active" if @tab == "tab0" %>" id="tab0">
+      <%= render 'projects/tabs/tab0' %>
+    </div>
 
     <div role="tabpanel" class="tab-pane  <%= "active" if @tab == "tab1" %>" id="tab1">
       <%= render 'projects/tabs/tab1', messages: @project.projectmessages %>
