@@ -1,10 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
+    @role = params["role"]
     super
-    raise
   end
 
   def create
+    @role = params[:user]["role"]
+    super
     # add custom create logic here
   end
 
