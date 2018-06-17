@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :projectmembers
   has_many :projects
-  has_many :events
   has_one :profile
 
   after_create :send_welcome_email

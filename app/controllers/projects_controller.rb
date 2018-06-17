@@ -35,11 +35,19 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
+    if current_user.is_admin?
+      render "projects/edit_admin"
+    end
+
     authorize @project
   end
 
   def update
-    authorize @project
+    project = Project.find(params[:id])
+    project.update(project_params)
+    authorize project
+    redirect_to projects_path
   end
 
   def destroy
@@ -60,7 +68,7 @@ private
   end
 
   def project_params
-    params.require(:project).permit(:sector, :project_name, :description, :user)
+    params.require(:project).permit(:sector, :project_name, :description, :user, :call_date)
   end
 
 end

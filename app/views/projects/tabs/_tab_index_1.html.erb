@@ -13,57 +13,62 @@
   </div>
 
 
-  <div class="row grid-row">
-    <div class="col-xs-2">
-    <h2>Nom du projet n°1 </h2>
-    <p>Entrepreneur n°1</p>
-  </div>
-    <div class="col-xs-2">
-      <div class="card-team-member">
-        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <h2>Amina Sagou</h2>
-      </div>
-    </div>
-    <div class="col-xs-2">
-       <div class="card-team-member">
-        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <h2>Joel Advisor</h2>
-      </div>
+  <% @projects.each do |project| %>
 
+    <div class="row grid-row">
+      <div class="col-xs-2">
+      <h2><%= project.project_name %></h2>
+      <p><%=  project.user.full_name%></p>
     </div>
-    <div class="col-xs-2">
-      <h2>Advisor validated</h2>
-    </div>
-    <div class="col-xs-2">
-       <h2>Organise call</h2>
-    </div>
-  </div>
-
-  <div class="row grid-row">
-    <div class="col-xs-2">
-    <h2>Nom du projet n°2 </h2>
-    <p>Entrepreneur n°2</p>
-  </div>
-    <div class="col-xs-2">
-      <div class="card-team-member">
-        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <h2>Mohamed Sagou</h2>
+      <div class="col-xs-2">
+        <div class="card-team-member">
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <h2><%= project.zainas.first%></h2>
+        </div>
       </div>
-    </div>
-    <div class="col-xs-2">
-       <div class="card-team-member">
-        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <h2>other advisor</h2>
-      </div>
+      <div class="col-xs-2">
+         <div class="card-team-member">
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <h2><%= project.advisors.empty? ? "non-assigné" : project.advisors.first.full_name %></h2>
+        </div>
 
+      </div>
+      <% if project.advisors.empty? %>
+        <div class="col-xs-2">
+          <h2>Nouveau projet</h2>
+          <p><%=  "#{project.created_at.strftime("%d/%m/%Y")}" %></p>
+        </div>
+        <div class="col-xs-2">
+          <%= link_to 'Assign an advisor for this project', new_project_projectmember_path(project, role: 'Advisor'), class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 10px; font-weight: bold; align-content: center"%>
+        </div>
+      <% elsif !project.callconfirmation %>
+        <div class="col-xs-2">
+          <h2>Advisor assigné, en attente de confirmation par l'entrepreneur </h2>
+          <p><%=  "" %></p>
+        </div>
+      <% elsif project.call_date.nil? %>
+        <div class="col-xs-2">
+          <h2>Assignor confirmé </h2>
+          <p><%=  "" %></p>
+        </div>
+        <div class="col-xs-2">
+          <%= link_to 'Organiser le call', edit_project_path(project), class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 10px; font-weight: bold; align-content: center"%>
+        <% elsif !project.confirmation_process && Time.now <= project.call_date %>
+
+        <% elsif !project.confirmation_process && Time.now > project.call_date %>
+
+        <% elsif project.confirmation_process %>
+          <div class="col-xs-2">
+          <h2>Le projet est lancé </h2>
+          <p><%=  "" %></p>
+        </div>
+        <% end %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-xs-2">
-      <h2>Call done</h2>
-    </div>
-    <div class="col-xs-2">
-       <h2>Zaina comitee</h2>
-    </div>
-  </div>
+
+
+  <% end %>
 
 
   <!--<a class="card-link" href="#" ></a>-->

@@ -2,7 +2,6 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :projectmembers
   has_many :projectmessages
-  has_many :events
   has_one :company
   has_many :investors
 

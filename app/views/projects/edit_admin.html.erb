@@ -1,0 +1,12 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :call_date %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit project" %>
+    </div>
+  </div>
+<% end %>
