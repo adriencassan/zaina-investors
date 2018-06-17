@@ -53,13 +53,31 @@
         </div>
         <div class="col-xs-2">
           <%= link_to 'Organiser le call', edit_project_path(project), class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 10px; font-weight: bold; align-content: center"%>
-        <% elsif !project.process_zainavalidation && Time.now <= project.call_date %>
-
-        <% elsif !project.process_zainavalidation && Time.now > project.call_date %>
-
-        <% elsif project.process_zainavalidation %>
+        </div>
+      <% elsif !project.call_done %>
           <div class="col-xs-2">
-            <h2>Le projet est lancé </h2>
+            <h2>Call organisé</h2>
+            <p><%= "#{project.call_date.strftime("%d/%m/%Y")}" %></p>
+          </div>
+          <div class="col-xs-2">
+            <%= link_to 'Call terminé',  complete_call_project_path(project),  method: :patch, class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 10px; font-weight: bold; align-content: center"%>
+          </div>
+        <% elsif !project.process_zainavalidation %>
+          <div class="col-xs-2">
+            <h2>Le call eu lieu, en attente de la validation par le comité</h2>
+            <p><%=  "" %></p>
+          </div>
+          <div class="col-xs-2">
+            <%= link_to 'Validation par le comité',  zainavalidation_project_path(project),  method: :patch, class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 10px; font-weight: bold; align-content: center"%>
+          </div>
+        <% elsif !project.processconfirmation %>
+          <div class="col-xs-2">
+            <h2>Le projet est validé par zaina, en attente du lancement par l'entrepreneur</h2>
+            <p><%=  "" %></p>
+          </div>
+        <% else %>
+          <div class="col-xs-2">
+            <h2>Le projet est validé, la deal room est ouverte</h2>
             <p><%=  "" %></p>
           </div>
         <% end %>

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     member do
       patch "confirm_call", to: "projects#confirm_call"
       patch "complete_call", to: "projects#complete_call"
+      patch "zainavalidation", to: "projects#zainavalidation"
+      patch "launch_process", to: "projects#launch_process"
     end
     resources :projectmessages, only: [ :new, :create ]
     resources :projectmembers, only: [ :new, :create, :edit, :update]

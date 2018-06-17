@@ -8,30 +8,37 @@
 
 <% if  current_user.is_entrepreneur? %>
 
-<!-- no advisor yet-->
+  <!-- no advisor yet-->
   <% if @project.advisors.empty? %>
-
     <p style="text-align: center; color: green" > An advisor will be suggested to you within 48 hours.
     <br> Please check your emails ! </p>
 
-  <% else %>
 
-<!-- advisor suggested, ask for confirmation-->
+  <!-- advisor assigned, entreprener has to confirm-->
+  <% elsif !@project.callconfirmation %>
     <p style="text-align: center" >We suggested an advisor for you. If your are satisfied please confirm we can schedule a call</p>
+    <a class ="btn btn-primary" id="confirmcall" style="font-size: 20px; margin: 20px; text-align: center;font-weight: bold" data-toggle="modal" data-target="#confirmedcallModal" data-project-id="<%= @project.id %>"> Confirm call planning </a>
 
-    <%if @project.callconfirmation == true %>
+  <!-- the advisor is confirmed, the call will be organised-->
+  <% elsif @project.call_date.nil? %>
       <p id="confirmcall" style="color: green; font-size: 18px; margin-left: 20px;font-weight: bold; text-align: center" > Call confirmed ! </p>
+      <p>Vous recevrez très prochainement des propositions de créneaux horaires pour l'organisation du call</p>
 
-    <%else %>
+  <!-- the call is planned, waiting for it happens -->
+  <% elsif !@project.call_done %>
+      <p><%= "Le call est planifié pour le #{@project.call_date.strftime("%d/%m/%Y")}" %></p>
 
-      <a class ="btn btn-primary" id="confirmcall" style="font-size: 20px; margin: 20px; text-align: center;font-weight: bold" data-toggle="modal" data-target="#confirmedcallModal" data-project-id="<%= @project.id %>"> Confirm call planning </a>
-    <% end %>
 
-<!-- advisor confirmed, give possibility to launch the process -->
-     <p style="text-align: center" > If you agree to work with us and your advisor, please launch the process proceeding to the paiement of a commitment fee </p>
-     <a class ="btn btn-primary" id="launchedprocess" style="font-size: 14px; margin: 20px; font-weight: bold" data-toggle="modal" data-target="#processlaunchModal"> Launch the process !</a>
+  <!-- the call happened, waiting for Zaina committe to validate-->
+  <% elsif !@project.process_zainavalidation%>
+      <p>Merci de nos échanges lors du call, Zaina reviendra très vite vers vous !</p>
 
-  <% end  %>
+  <!-- advisor confirmed, give possibility to launch the process -->
+  <% else %>
+    <p style="text-align: center">Zaina sera heureux de vous accompagner pour votre projet !</p>
+    <p style="text-align: center" > If you agree to work with us and your advisor, please launch the process proceeding to the paiement of a commitment fee </p>
+    <a class ="btn btn-primary" id="launchedprocess" style="font-size: 14px; margin: 20px; font-weight: bold" data-toggle="modal" data-target="#processlaunchModal" data-project-id="<%= @project.id %>"> Launch the process !</a>
+  <% end %>
 <% end %>
 
 <!-- User is zaina -->
