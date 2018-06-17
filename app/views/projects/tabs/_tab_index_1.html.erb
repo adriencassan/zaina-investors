@@ -53,26 +53,19 @@
         </div>
         <div class="col-xs-2">
           <%= link_to 'Organiser le call', edit_project_path(project), class:"navbar-wagon-link link btn btn-primary", id:"small-btn", style:"color: white; font-size: 10px; font-weight: bold; align-content: center"%>
-        <% elsif !project.confirmation_process && Time.now <= project.call_date %>
+        <% elsif !project.process_zainavalidation && Time.now <= project.call_date %>
 
-        <% elsif !project.confirmation_process && Time.now > project.call_date %>
+        <% elsif !project.process_zainavalidation && Time.now > project.call_date %>
 
-        <% elsif project.confirmation_process %>
+        <% elsif project.process_zainavalidation %>
           <div class="col-xs-2">
-          <h2>Le projet est lancé </h2>
-          <p><%=  "" %></p>
-        </div>
+            <h2>Le projet est lancé </h2>
+            <p><%=  "" %></p>
+          </div>
         <% end %>
-        </div>
-      <% end %>
     </div>
-
-
   <% end %>
 
 
   <!--<a class="card-link" href="#" ></a>-->
 </div>
-
-
-
