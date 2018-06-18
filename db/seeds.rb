@@ -11,7 +11,7 @@
 zaina1 = User.new(email: "admin@zaina.io", password: "password", role: "Zaina", first_name:"aminazaina", last_name:"sagouzaina" ,admin: true)
 zaina1.save!
 
-profile = Profile.new(user_id: "1", first_name: zaina1.first_name, last_name: zaina1.last_name)
+profile = Profile.new(user: zaina1, first_name: zaina1.first_name, last_name: zaina1.last_name)
 profile.save!
 
 # zaina2 = User.new(email: "johnzaina@zaina.io", password: "password", role: "Zaina", first_name:"johnzaina", last_name:"smithzaina" ,admin: true)
@@ -22,37 +22,37 @@ profile.save!
 
 # # Users / Advisors
 
-# advisor1 = User.new(email: "aminaadvisor@zaina.io", password: "password", role: "Advisor", first_name:"aminaadvisor", last_name:"sagouadvisor")
-# advisor1.save!
+advisor1 = User.new(email: "aminaadvisor@zaina.io", password: "password", role: "Advisor", first_name:"aminaadvisor", last_name:"sagouadvisor")
+advisor1.save!
 
-# profile = Profile.new(user_id: "3", first_name: advisor1.first_name, last_name: advisor1.last_name)
-# profile.save!
+profile = Profile.new(user: advisor1, first_name: advisor1.first_name, last_name: advisor1.last_name)
+profile.save!
 
-# #Users / Entrepreneurs
-# entrepreneur1 = User.new(email: "aminaentrepreneur@zaina.io", password: "password", role: "Entrepreneur", first_name:"aminaentrepreneur", last_name:"sagouentrepreneur")
-# entrepreneur1.save!
+# Users / Entrepreneurs
+entrepreneur1 = User.new(email: "aminaentrepreneur@zaina.io", password: "password", role: "Entrepreneur", first_name:"aminaentrepreneur", last_name:"sagouentrepreneur")
+entrepreneur1.save!
 
-# profile = Profile.new(user_id: "4", first_name: entrepreneur1.first_name, last_name: entrepreneur1.last_name)
-# profile.save!
-
-
-# # projects
-
-# project = Project.new(project_name: "lucas project", user_id: 4 )
-# project.save!
-
-# # companies
-# company = Company.new(project_id: "1")
-# company.save!
-
-# #projectmembers (of lucas project)
-# projectmember = Projectmember.new(user_id: 1, project_id: 1)
-# projectmember.save!
+profile = Profile.new(user: entrepreneur1, first_name: entrepreneur1.first_name, last_name: entrepreneur1.last_name)
+profile.save!
 
 
-# #investors
-# investor = Investor.new(name: "Investor1", project_id: 1, nextstep: "Send presentation", comment:"Should move quickly if interest confirmed", nature: "Private equity fund", geography: "France", contacted:"yes", contacts:"ceo john smith", )
-# investor.save!
+# Projects
+
+project = Project.new(project_name: "My project", user: entrepreneur1 )
+project.save!
+
+# Companies
+company = Company.new(project: project)
+company.save!
+
+# Projectmembers (of lucas project)
+projectmember = Projectmember.new(user: entrepreneur1, project: project)
+projectmember.save!
+
+
+#investors
+#investor = Investor.new(name: "Investor1", project_id: 1, nextstep: "Send presentation", comment:"Should move quickly if interest confirmed", nature: "Private equity fund", geography: "France", contacted:"yes", contacts:"ceo john smith", )
+#investor.save!
 
 # #messages
 
@@ -61,5 +61,4 @@ profile.save!
 # projectmessage = Projectmessage.new(message: "my test message", project: Project.first, date: Date.today, user: User.all.sample)
 # projectmessage.save!
 # end
-
 

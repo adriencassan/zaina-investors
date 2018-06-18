@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>PROJET</h1>
+  <%= simple_form_for @project do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :call_date, required: true, input_html: { data: { provide: 'datepicker', 'date-format': 'dd/mm/yyyy' } }, as: :string %>
+     <%= f.input :process_zainavalidation, label: "Validation par la comité Zaina", required: true %>
+    <%= f.submit "Submit project" %>
+  <% end %>
+</div>
+

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:confirm_call]
-  skip_before_action :authenticate_user!, only: [:confirm_call]
+  skip_before_action :verify_authenticity_token, only: [:confirm_call, :launch_process]
+  skip_before_action :authenticate_user!, only: [:confirm_call, :launch_process]
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -35,11 +35,19 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
+    if current_user.is_admin?
+      render "projects/edit_admin"
+    end
+
     authorize @project
   end
 
   def update
-    authorize @project
+    project = Project.find(params[:id])
+    project.update(project_params)
+    authorize project
+    redirect_to projects_path
   end
 
   def destroy
@@ -51,6 +59,30 @@ class ProjectsController < ApplicationController
     @project.callconfirmation = true
     @project.save
     authorize @project
+    redirect_to projects_path
+  end
+
+  def complete_call
+    @project = Project.find(params[:id])
+    @project.call_done = true
+    @project.save
+    authorize @project
+    redirect_to projects_path
+  end
+
+  def zainavalidation
+    @project = Project.find(params[:id])
+    @project.process_zainavalidation = true
+    @project.save
+    authorize @project
+    redirect_to projects_path
+  end
+
+  def launch_process
+    @project = Project.find(params[:id])
+    @project.processconfirmation = true
+    @project.save
+    authorize @project
   end
 
 private
@@ -60,7 +92,7 @@ private
   end
 
   def project_params
-    params.require(:project).permit(:sector, :project_name, :description, :user)
+    params.require(:project).permit(:sector, :project_name, :description, :user, :call_date)
   end
 
 end

@@ -22,6 +22,18 @@ class ProjectPolicy < ApplicationPolicy
       true
     end
 
+    def complete_call?
+      true
+    end
+
+    def zainavalidation?
+      true
+    end
+
+    def launch_process?
+      true
+    end
+
     def update?
       is_owner_or_admin?
     end

@@ -1,6 +1,8 @@
 class ProjectmembersController < ApplicationController
 
 
+
+
   def new
     @project = Project.find(params[:project_id])
     @projectmember = Projectmember.new
@@ -50,5 +52,7 @@ class ProjectmembersController < ApplicationController
   def projectmember_params
     params.require(:projectmember).permit(:user_id)
   end
+
+
 
 end

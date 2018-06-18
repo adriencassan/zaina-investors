@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem 'bootstrap-datepicker-rails'
 
 # user_gem
 gem 'devise'
