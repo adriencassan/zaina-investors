@@ -3,11 +3,16 @@
   <%= f.error_notification %>
 
 <div class="container text-center d sign_up_box" style="width: 600">
-  <h2 class="sign_up">Sign up</h2>
+  <h2 class="sign_up">Sign up as a new <%= @role.downcase %> </h2>
 
   <div class="form-inputs sign_up_form">
 
-    <%= f.input :role, collection: ["Advisor","Entrepreneur"], style: "display: table-row"%>
+    <% if !@role.nil? %>
+      <%= f.hidden_field :role, value: @role %>
+    <% else %>
+      <%= f.input :role,  collection: ["Advisor","Entrepreneur"],selected: @role,style: "display: table-row" %>
+    <% end %>
+
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
