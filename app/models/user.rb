@@ -11,43 +11,4 @@ class User < ApplicationRecord
   after_create :send_welcome_email
   after_create :build_profile
 
-  def build_profile
-    Profile.create(user_id: self.id)
-  end
-
-   def self.advisor
-    @advisors = User.where(role: "Advisor")
-   end
-
-  def full_name
-    "#{first_name} #{last_name}"
-  end
-
-   def self.zaina
-    @zainas = User.where(role: "Zaina")
-   end
-
-
-  def is_admin?
-    self.role == "Zaina"
-  end
-
-  def is_entrepreneur?
-    self.role == "Entrepreneur"
-  end
-
-  def is_advisor?
-    self.role == "Advisor"
-  end
-
-  def has_projectmember?
-    true unless (self.projectmembers.nil? || self.projectmembers.empty?)
-  end
-
-private
-
-  def send_welcome_email
-    UserMailer.welcome(self).deliver_now
-  end
-
 end

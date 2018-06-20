@@ -10,36 +10,12 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
-
-  # def check_signed_in
-  #   redirect_to project_path(@project) if signed_in?
-  # end
-
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :company, :function, :role])
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :function])
-  end
-
-
-  def after_sign_in_path_for(resource)
-    if current_user.role == "Zaina"
-      projects_path
-    elsif
-      current_user.role == "Advisor"
-      projects_path
-    else
-      current_user.role = "Entrepreneur"
-      current_user.save!
-      if current_user.projects.empty?
-        new_project_path
-      else
-        @project = current_user.projects.first
-        project_path(@project)
-      end
-    end
   end
 
 
