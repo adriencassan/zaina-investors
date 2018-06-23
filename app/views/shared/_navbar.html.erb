@@ -9,24 +9,12 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to 'About Zaina', pages_about_path, class: "navbar-wagon-item navbar-wagon-link"%>
-    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">About Zaina</a> -->
-    <%= link_to 'Team', pages_teamoverview_path, class: "navbar-wagon-item navbar-wagon-link"%>
-    <%= link_to 'Advisors', pages_advisorsoverview_path, class: "navbar-wagon-item navbar-wagon-link"%>
+
 
     <!-- Log in button -->
     <div style="color:#972F2A; font-size: 14px">
       <% if user_signed_in? %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-secondary", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px" %>
-      <% if current_user.is_entrepreneur? %>
-       <% if !current_user.projects.empty?  %>
-        <% @project = current_user.projects.first  %>
-        <%= link_to "My project", project_path(@project), class:"btn btn-primary", id:"small-btn-green", style:"color: white; font-size: 14px; margin-left: 20px" %>
-        <% end  %>
-      <% else  %>
-        <%= link_to "Projects", projects_path, class:"btn btn-primary", id:"small-btn-green", style:"color: white; font-size: 14px; margin-left: 20px" %>
-      <% end  %>
-
       <% else %>
         <a href="<%= new_user_session_path %> " class="btn btn-primary", id="small-btn" style="color: white; font-size: 14px; margin-left: 20px">Log in</a>
       <% end %>
@@ -38,18 +26,11 @@
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <% if user_signed_in? %>
-          <% if current_user.profile.photo.url.nil?  %>
-          <%= image_tag 'profile-icon.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' }, style:"border" %>
-
-            <!-- <img src="image_path('profile-icon.png')" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
-          <% else  %>
-            <!-- <img src= <%= current_user.profile.photo %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
-          <%= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' } %>
-          <% end  %>
+        <%= image_tag 'profile-icon.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' }, style:"border" %>
 
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li> <%= link_to "Profile", profile_path(current_user.profile) %> </li>
+          <li> A menu</li>
         </ul>
          <%end %>
       </div>

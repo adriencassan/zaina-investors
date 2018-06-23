@@ -1,0 +1,38 @@
+
+<div class="container-form">
+
+<%= simple_form_for @investor do |f| %>
+  <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :name, required: true,label: "Investisseur"  %>
+
+
+
+      <div class="from-group">
+      <label>Selectionnez les secteurs :</label>
+      <%= select_tag "secteur", options_from_collection_for_select(Sector.all,:id,:name,selected: @investor.sectors_primary.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
+      <label>Selectionnez les secteurs secondaire :</label>
+      <%= select_tag "secteur2", options_from_collection_for_select(Sector.all,:id,:name,selected: @investor.sectors_secondary.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit project" %>
+    </div>
+  </div>
+
+<% end %>
+
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    $('.select-sectors').select2();
+});
+</script>
