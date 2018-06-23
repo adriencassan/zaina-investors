@@ -16,4 +16,12 @@ class InvestorPolicy < ApplicationPolicy
   def edit?
     true
   end
+
+  def create?
+    true
+  end
+
+  def update?
+    true
+  end
 end

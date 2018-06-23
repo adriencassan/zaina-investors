@@ -15,9 +15,9 @@ class Investor < ApplicationRecord
     InvestorSector.where(investor: self).where(rank: 2).map { |a| a.sector }
   end
 
-  def sectors_update(sectors1,sectors2)
+  def update_sectors(sectors1,sectors2)
     self.sectors.destroy_all
-    sectors1.each { |sector| InvestorSector.create(project: self, sector: Sector.find(sector.id), rank:1)}
-    sectors2.each { |sector| InvestorSector.create(project: self, sector: Sector.find(sector.id), rank:2)}
+    sectors1.each { |id| InvestorSector.create(investor: self, sector: Sector.find(id), rank:1)} unless sectors1.nil?
+    sectors2.each { |id| InvestorSector.create(investor: self, sector: Sector.find(id), rank:2)} unless sectors2.nil?
   end
 end
