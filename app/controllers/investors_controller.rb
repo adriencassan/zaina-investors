@@ -1,7 +1,7 @@
 class InvestorsController < ApplicationController
 
   def index
-    @investors = policy_scope(Investor).paginate(page: params[:page], per_page: 10)
+    @investors = policy_scope(Investor).order(id: :asc).paginate(page: params[:page], per_page: 10)
     authorize @investors
   end
 
@@ -37,6 +37,6 @@ class InvestorsController < ApplicationController
   private
 
   def investor_param
-    params.require(:investor).permit(:name, :sector, :sector2)
+    params.require(:investor).permit(:name, :sector, :sector2, :investment_min, :investment_max, :nature, :operation_type, :localisation, :comment)
   end
 end

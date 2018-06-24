@@ -33,9 +33,11 @@
 }
 
 .select2-selection {
-  height: 60px;
+  height: 80px;
   margin-bottom: 10px;
   width: 100%;
+  font-size: 10px;
+  overflow: scroll;
 }
 
 .btn-form-sm {
