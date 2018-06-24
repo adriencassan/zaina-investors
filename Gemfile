@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'bootstrap-datepicker-rails'
+gem 'will_paginate-bootstrap'
 
 # user_gem
 gem 'devise'

@@ -1,1 +1,44 @@
-<%= "This is the page" %>
+
+
+<div class="main-container">
+
+  <h3 class="text-center">Base investisseurs</h3>
+
+
+
+  <div class="grid">
+
+     <div class="row grid-row">
+        <div class="col-xs-8"></div>
+        <div class="col-xs-3 text-right"><p>Ajouter un nouvel investisseur</p></div>
+        <div class="col-xs-1"> <%= link_to "Ajouter", new_investor_path, class:"btn btn-primary btn-form-sm"%> </div>
+    </div>
+
+
+    <div class="row grid-row-header">
+      <div class="col-xs-4 col-md-2">Name</div>
+      <div class="hidden-xs col-md-1">Nature</div>
+      <div class="hidden-xs col-md-1">Type d'opération</div>
+      <div class="col-xs-1">Ticket</div>
+      <div class="hidden-xs col-md-6">Secteurs principaux</div>
+    </div>
+<div class="grid-rows">
+      <% @investors.each do |investor| %>
+        <div class="row grid-row">
+          <div class="col-xs-4 col-md-2"><p><%= investor.name %></p></div>
+          <div class="hidden-xs col-md-1"><p><%= investor.nature %></p></div>
+          <div class="hidden-xs col-md-1"><p><%= investor.operation_type %></p></div>
+          <div class="col-xs-1"><p><%= "#{investor.investment_min} - #{investor.investment_max} k€" %></p></div>
+          <div class="hidden-xs col-md-6"><p><%= investor.sectors_primary.pluck(:name).join(", ") %></p></div>
+          <div class="col-xs-1"> <%= link_to "Modifier", edit_investor_path(investor), class:"btn btn-primary btn-form-sm"%> </div>
+        </div>
+      <% end %>
+</div>
+    <div class="grid-pagination">
+        <%= will_paginate @investors, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+
+
+</div>
+

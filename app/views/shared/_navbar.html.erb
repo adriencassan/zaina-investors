@@ -14,7 +14,7 @@
     <!-- Log in button -->
     <div style="color:#972F2A; font-size: 14px">
       <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-secondary", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px" %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-secondary btn-small", id:"small-btn", style:"color: white; font-size: 14px; margin-left: 20px" %>
       <% else %>
         <a href="<%= new_user_session_path %> " class="btn btn-primary", id="small-btn" style="color: white; font-size: 14px; margin-left: 20px">Log in</a>
       <% end %>

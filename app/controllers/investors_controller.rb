@@ -1,7 +1,7 @@
 class InvestorsController < ApplicationController
 
   def index
-    @investors = policy_scope(Investor)
+    @investors = policy_scope(Investor).paginate(page: params[:page], per_page: 10)
     authorize @investors
   end
 
@@ -17,9 +17,13 @@ class InvestorsController < ApplicationController
 
   def create
     @investor = Investor.new(investor_param)
-    @investor.save!
-    @investor.update_sectors(params[:sector],params[:sector2])
     authorize @investor
+    if @investor.save
+      @investor.update_sectors(params[:sector],params[:sector2])
+      redirect_to investors_path
+    else
+      render "investors/new"
+    end
   end
 
   def update
