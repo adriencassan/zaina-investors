@@ -92,12 +92,6 @@ config.webpacker.check_yarn_integrity = false
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  #added after devise gem installation
-  config.action_mailer.default_url_options = { host: 'heroku', port: 3000 }
-
-  config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
-  config.action_mailer.default_url_options = { host: "https://zaina-aminasag.herokuapp.com/" }
 
 
 end
