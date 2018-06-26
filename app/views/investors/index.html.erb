@@ -16,11 +16,12 @@
 
 
     <div class="row grid-row-header">
-      <div class="col-xs-4 col-md-2">Name</div>
+      <div class="col-xs-4 col-md-2">Nom</div>
+      <div class="hidden-xs hidden-sm col-md-1">Pays</div>
       <div class="hidden-xs hidden-sm col-md-1">Nature</div>
       <div class="hidden-xs hidden-sm col-md-1">Type d'opération</div>
       <div class="col-xs-4 col-md-1">Ticket</div>
-      <div class="hidden-xs hidden-sm col-md-6">Secteurs principaux</div>
+      <div class="hidden-xs hidden-sm col-md-5">Secteurs principaux</div>
       <div class="col-xs-1"></div>
     </div>
 
@@ -28,10 +29,11 @@
       <% @investors.each do |investor| %>
         <div class="row grid-row">
           <div class="col-xs-4 col-md-2" style="font-weight: bold"><p><%= investor.name %></p></div>
+          <div class="hidden-xs hidden-sm col-md-1"><p><%= investor.localisation %></p></div>
           <div class="hidden-xs hidden-sm col-md-1"><p><%= investor.nature %></p></div>
           <div class="hidden-xs hidden-sm col-md-1"><p><%= investor.operation_type %></p></div>
           <div class="col-xs-4 col-md-1"><p><%= "#{investor.investment_min} - #{investor.investment_max} k€" %></p></div>
-          <div class="hidden-xs hidden-sm col-md-6"><p><%= investor.sectors_primary.pluck(:name).join(" - ") %></p></div>
+          <div class="hidden-xs hidden-sm col-md-5"><p><%= investor.sectors_primary.pluck(:name).join(" - ") %></p></div>
           <div class="col-xs-1"> <%= link_to "Modifier", edit_investor_path(investor), class:"btn btn-primary btn-form-sm"%> </div>
         </div>
       <% end %>

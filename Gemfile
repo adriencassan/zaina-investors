@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate-bootstrap'
+gem 'country_select'
 
 # user_gem
 gem 'devise'

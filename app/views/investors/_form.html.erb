@@ -14,9 +14,10 @@
 
       <div class="form-inputs row">
         <%= f.input :name, required: true,label: "Nom de l'investisseur", wrapper_html: {class: "col-xs-12"}  %>
-        <%= f.input :localisation, required: true,label: "Localisation", wrapper_html: {class: "col-xs-12"}  %>
 
-
+        <div class="col-xs-12">
+        <%= f.input :localisation, as: :country%>
+        </div>
 
         <div class="col-xs-3">
         <%= f.input :nature, required: true, collection: ["Individuel","Family Office","Business Angel", "Fonds de gestion d'actifs","Fonds souverain", "Fonds de capital investissement", "Entreprise Publique", "Autres"], placeholder: "Choisir un élément", label: "Nature"  %>
