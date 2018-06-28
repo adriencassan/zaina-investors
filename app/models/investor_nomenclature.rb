@@ -7,4 +7,8 @@ class InvestorNomenclature < ApplicationRecord
   def self.zones
     InvestorNomenclature.where(type_nomenclature: "zone")
   end
+
+  def self.nature_operations
+    InvestorNomenclature.where(type_nomenclature: "nature_operation").pluck(:name)
+  end
 end

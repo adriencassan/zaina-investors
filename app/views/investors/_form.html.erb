@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-xs-6">
-                  <%= f.input :nature, required: true, collection: ["Individuel","Family Office","Business Angel", "Fonds de gestion d'actifs","Fonds souverain", "Fonds de capital investissement", "Entreprise Publique", "Autres"], placeholder: "Choisir un élément", label: "Nature"  %>
+                  <%= f.input :nature, required: true, collection: InvestorNomenclature.nature_operations, placeholder: "Choisir un élément", label: "Nature"  %>
                 </div>
 
                 <div class="col-xs-6">

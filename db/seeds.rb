@@ -11,10 +11,6 @@
 zaina1 = User.new(email: "admin@zaina.io", password: "password", first_name:"admin", last_name:"admin" ,admin: true)
 zaina1.save!
 
-35.times do |i|
-  investor = Investor.new(name: "investisseur n°#{i}", nature: "Family office", investment_min: rand(100..1000), investment_max: rand(100..1000), localisation: ["DZ","FR","AU","BE","CA","CN","DE","MX","TN","SN","MA","US"].sample, operation_type: "Equity")
-  investor.save!
-end
 
 
 # Secteurs
@@ -86,6 +82,24 @@ InvestorNomenclature.create(type_nomenclature: 'zone', name: 'Cameroun')
 InvestorNomenclature.create(type_nomenclature: 'zone', name: 'Côte d’Ivoire')
 InvestorNomenclature.create(type_nomenclature: 'zone', name: 'Egypte')
 InvestorNomenclature.create(type_nomenclature: 'zone', name: 'Sénégal')
+
+#Natures opérations
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Capital Amorçage')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Capital Risque')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Capital Développement')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Capital Transmission')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'LBO')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Mezzanine ')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Rachat de positions intermédiaires ')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Retournement')
+InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Garantie ')
+
+
+35.times do |i|
+  investor = Investor.new(name: "investisseur n°#{i}", nature: InvestorNomenclature.nature_operations.sample, investment_min: rand(100..1000), investment_max: rand(100..1000), localisation: ["DZ","FR","AU","BE","CA","CN","DE","MX","TN","SN","MA","US"].sample, operation_type: "Equity")
+  investor.save!
+end
+
 
 Investor.all.each do |investor|
 
