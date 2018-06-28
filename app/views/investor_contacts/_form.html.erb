@@ -1,0 +1,9 @@
+<%= simple_form_for ([@investor, @investor_contact]), url: investor_investor_contact_path(@investor), method: :post do |f| %>
+<%= f.error_notification %>
+  <%= f.input :name, placeholder: "nom", wrapper_html: {class: "col-xs-3"} %>
+  <%= f.input :role, placeholder: "role", wrapper_html: {class: "col-xs-2"} %>
+  <%= f.input :email, placeholder: "email", wrapper_html: {class: "col-xs-3"}%>
+  <%= f.input :phone, placeholder: "telephone", wrapper_html: {class: "col-xs-3"}%>
+  <%= f.submit "Ajouter", class: "col-xs-1 btn btn-primary btn-form-sm" %>
+<% end %>
+

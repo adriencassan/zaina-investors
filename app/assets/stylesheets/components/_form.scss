@@ -33,11 +33,15 @@
 }
 
 .select2-selection {
-  height: 80px;
+  height: 90px;
   margin-bottom: 10px;
   width: 100%;
-  font-size: 10px;
+  font-size: 12px;
   overflow: scroll;
+}
+
+.select2-container {
+  width: 100%;
 }
 
 .btn-form-sm {
@@ -54,4 +58,21 @@
   margin-right: 20px;
   padding: 4px;
   font-size: 12px;
+}
+
+
+
+.form-row {
+  margin-bottom: 5px;
+}
+
+.form-tabs {
+  margin: 10px;
+}
+
+.form-tab-content {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+  min-height: 300px;
 }

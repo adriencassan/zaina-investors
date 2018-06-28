@@ -4,7 +4,8 @@ import 'select2';
 
 $('.select-sectors').select2({
   multiple: true,
-   closeOnSelect: false
+   closeOnSelect: false,
+   width: '1OO%'
 });
 
 

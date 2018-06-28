@@ -1,56 +1,124 @@
-
 <div class="main-container">
 
 
   <div class="container container-form">
-
     <h2 class="text-center">Formulaire investisseurs</h2>
 
-  <div class="grid">
-  <div class="row">
-
     <%= simple_form_for @investor do |f| %>
-      <%= f.error_notification %>
+    <%= f.error_notification %>
 
-      <div class="form-inputs row">
+      <div class="row">
         <%= f.input :name, required: true,label: "Nom de l'investisseur", wrapper_html: {class: "col-xs-12"}  %>
+      </div>
 
-        <div class="col-xs-12">
-        <%= f.input :localisation, as: :country%>
+      <div class="form-tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item active">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">General</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="target-tab" data-toggle="tab" href="#target" role="tab" aria-controls="target" aria-selected="false">Cibles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comment" aria-selected="false">Commentaires</a>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+
+          <!-- Tab1 -->
+          <div class="tab-pane fade active in" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="form-tab-content">
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= f.input :localisation, as: :country%>
+                </div>
+
+                <div class="col-xs-6">
+                  <%= f.input :nature, required: true, collection: ["Individuel","Family Office","Business Angel", "Fonds de gestion d'actifs","Fonds souverain", "Fonds de capital investissement", "Entreprise Publique", "Autres"], placeholder: "Choisir un élément", label: "Nature"  %>
+                </div>
+
+                <div class="col-xs-6">
+                  <%= f.input :operation_type, required: true, collection: ["Debt","Equity"], placeholder: "Choisir un élément", label: "Type d'opération"  %>
+                </div>
+
+
+                <%= f.input :investment_min, required: true,label: "Ticket minimum (k€)", input_html: {class: "text-center"} ,wrapper_html: {class: "col-xs-6"} %>
+                <%= f.input :investment_max, required: true,label: "Ticket maximum (k€)", input_html: {class: "text-center"}, wrapper_html: {class: "col-xs-6"} %>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="target" role="tabpanel" aria-labelledby="target-tab">
+            <div class="form-tab-content">
+
+
+              <div class="row">
+
+                <div class="col-xs-12">
+                  <label>Selectionnez les secteurs :</label>
+                  <%= select_tag "sectors", options_from_collection_for_select(InvestorNomenclature.sectors.all,:id,:name,selected: @investor.sectors_primary.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
+                </div>
+
+                <div class="col-xs-12">
+                  <label>Selectionnez les secteurs secondaires :</label>
+                  <%= select_tag "sectors2", options_from_collection_for_select(InvestorNomenclature.sectors.all,:id,:name,selected: @investor.sectors_secondary.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
+                </div>
+
+                <div class="col-xs-12">
+                  <label>Selectionnez la(les) zone(s) ciblée(s) :</label>
+                  <%= select_tag "zones", options_from_collection_for_select(InvestorNomenclature.zones.all,:id,:name,selected: @investor.zones.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab2 -->
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="form-tab-content">
+                <div class="row form-row">
+                  <div class="col-xs-2"><%= "nom" %></div>
+                  <div class="col-xs-2"><%= "role" %></div>
+                  <div class="col-xs-2"><%= "email" %></div>
+                  <div class="col-xs-2"><%= "téléphone" %></div>
+                  <div class="col-xs-2"><%= "supprimer ?" %></div>
+                </div>
+
+              <%= f.simple_fields_for :investor_contacts do |h| %>
+                <div class="row form-row ">
+                  <div class="col-xs-2"><%= h.text_field :name, placeholder: "nom" %></div>
+                  <div class="col-xs-2"><%= h.text_field :role, placeholder: "role" %></div>
+                  <div class="col-xs-2"><%= h.text_field :email, placeholder: "email" %></div>
+                  <div class="col-xs-2"><%= h.text_field :phone, placeholder: "n° de téléphone" %></div>
+                  <div class="col-xs-2"><%= h.check_box :_destroy%></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <!-- Tab3 -->
+          <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
+            <div class="form-tab-content">
+              <%= f.input :comment, required: true,label: "Commentaires", as: :text, autofocus: true, input_html: {row: 5, class: "from-control-lg"}, wrapper_html: {class: "col-xs-12"} %>
+            </div>
+          </div>
         </div>
-
-        <div class="col-xs-3">
-        <%= f.input :nature, required: true, collection: ["Individuel","Family Office","Business Angel", "Fonds de gestion d'actifs","Fonds souverain", "Fonds de capital investissement", "Entreprise Publique", "Autres"], placeholder: "Choisir un élément", label: "Nature"  %>
-        </div>
-        <div class="col-xs-3">
-        <%= f.input :operation_type, required: true, collection: ["Debt","Equity"], placeholder: "Choisir un élément", label: "Type d'opération"  %>
-        </div>
-        <%= f.input :investment_min, required: true,label: "Ticket minimum (k€)", input_html: {class: "text-center"} ,wrapper_html: {class: "col-xs-3"} %>
-        <%= f.input :investment_max, required: true,label: "Ticket maximum (k€)", input_html: {class: "text-center"}, wrapper_html: {class: "col-xs-3"} %>
-
-        <div class="col-xs-6">
-          <label>Selectionnez les secteurs :</label>
-          <%= select_tag "sector", options_from_collection_for_select(Sector.all,:id,:name,selected: @investor.sectors_primary.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
-        </div>
-        <div class="col-xs-6">
-          <label>Selectionnez les secteurs secondaires :</label>
-          <%= select_tag "sector2", options_from_collection_for_select(Sector.all,:id,:name,selected: @investor.sectors_secondary.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
-        </div>
-
-        <%= f.input :comment, required: true,label: "Commentaires", as: :text, autofocus: true, input_html: {row: 5, class: "from-control-lg"}, wrapper_html: {class: "col-xs-12"} %>
-
-
-
+      </div>
 
       <div class="actions col-xs-6 offset-xs-3">
         <%= f.submit "Enregistrer", class: "btn btn-primary btn-form-lg" %>
         <%= link_to "Retour", :back, class: "btn btn-primary btn-form-lg"  %>
       </div>
-    <% end %>
-    </div>
-    </div>
-  </div>
 
+    <%end%>
+
+  </div>
 </div>
 
 <script>

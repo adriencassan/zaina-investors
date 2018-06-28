@@ -7,7 +7,6 @@ class CreateInvestors < ActiveRecord::Migration[5.1]
       t.integer :investment_max
       t.string :operation_type
       t.string :localisation
-      t.string :contacts
       t.string :comment
       t.timestamps
     end

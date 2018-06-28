@@ -7,11 +7,14 @@ class InvestorsController < ApplicationController
 
   def new
     @investor = Investor.new()
+    3.times { @investor.investor_contacts.build }
     authorize @investor
   end
 
   def edit
     @investor = Investor.find(params[:id])
+    @investor.investor_contacts.build
+    #@investor_contact = InvestorContact.new
     authorize @investor
   end
 
@@ -22,6 +25,7 @@ class InvestorsController < ApplicationController
       @investor.update_sectors(params[:sector],params[:sector2])
       redirect_to investors_path
     else
+      3.times { @investor.investor_contacts.build }
       render "investors/new"
     end
   end
@@ -29,7 +33,7 @@ class InvestorsController < ApplicationController
   def update
     @investor = Investor.find(params[:id])
     @investor.update(investor_param)
-    @investor.update_sectors(params[:sector],params[:sector2])
+    @investor.update_attributes(params[:sectors],params[:sectors2],params[:zones])
     authorize @investor
     redirect_to investors_path
   end
@@ -37,6 +41,6 @@ class InvestorsController < ApplicationController
   private
 
   def investor_param
-    params.require(:investor).permit(:name, :sector, :sector2, :investment_min, :investment_max, :nature, :operation_type, :localisation, :comment)
+    params.require(:investor).permit(:name, :sectors, :sectors2, :zones, :investment_min, :investment_max, :nature, :operation_type, :localisation, :comment, investor_contacts_attributes: [:id, :name, :role, :email, :phone, :_destroy])
   end
 end

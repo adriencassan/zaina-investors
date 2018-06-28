@@ -10,19 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180622043825) do
+ActiveRecord::Schema.define(version: 20180626052555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "investor_sectors", force: :cascade do |t|
+  create_table "investor_attributes", force: :cascade do |t|
     t.bigint "investor_id"
-    t.bigint "sector_id"
-    t.integer "rank", default: 1
+    t.bigint "investor_nomenclature_id"
+    t.string "type_attribute"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["investor_id"], name: "index_investor_sectors_on_investor_id"
-    t.index ["sector_id"], name: "index_investor_sectors_on_sector_id"
+    t.index ["investor_id"], name: "index_investor_attributes_on_investor_id"
+    t.index ["investor_nomenclature_id"], name: "index_investor_attributes_on_investor_nomenclature_id"
+  end
+
+  create_table "investor_contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "role"
+    t.string "email"
+    t.string "phone"
+    t.bigint "investor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["investor_id"], name: "index_investor_contacts_on_investor_id"
+  end
+
+  create_table "investor_nomenclatures", force: :cascade do |t|
+    t.string "type_nomenclature"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "investors", force: :cascade do |t|
@@ -32,14 +50,7 @@ ActiveRecord::Schema.define(version: 20180622043825) do
     t.integer "investment_max"
     t.string "operation_type"
     t.string "localisation"
-    t.string "contacts"
     t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sectors", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180622043825) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "investor_sectors", "investors"
-  add_foreign_key "investor_sectors", "sectors"
+  add_foreign_key "investor_attributes", "investor_nomenclatures"
+  add_foreign_key "investor_attributes", "investors"
+  add_foreign_key "investor_contacts", "investors"
 end

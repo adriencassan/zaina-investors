@@ -1,6 +1,8 @@
 class Investor < ApplicationRecord
-   has_many :investor_sectors
-   has_many :sectors, through: :investor_sectors
+   has_many :investor_attributes
+   has_many :investor_contacts
+
+   accepts_nested_attributes_for :investor_contacts, allow_destroy: true, reject_if: lambda {|attributes| attributes['name'].blank?}
 
 
    validates :name, presence: true
@@ -8,16 +10,22 @@ class Investor < ApplicationRecord
 
 
   def sectors_primary
-    InvestorSector.where(investor: self).where(rank: 1).map { |a| a.sector }
+    InvestorAttribute.where(investor: self).where(type_attribute: "sector_primary").map { |a| a.investor_nomenclature }
   end
 
   def sectors_secondary
-    InvestorSector.where(investor: self).where(rank: 2).map { |a| a.sector }
+    InvestorAttribute.where(investor: self).where(type_attribute: "sector_secondary").map { |a| a.investor_nomenclature }
   end
 
-  def update_sectors(sectors1,sectors2)
-    self.sectors.destroy_all
-    sectors1.each { |id| InvestorSector.create(investor: self, sector: Sector.find(id), rank:1)} unless sectors1.nil?
-    sectors2.each { |id| InvestorSector.create(investor: self, sector: Sector.find(id), rank:2)} unless sectors2.nil?
+
+  def zones
+    InvestorAttribute.where(investor: self).where(type_attribute: "zone").map { |a| a.investor_nomenclature }
+  end
+
+  def update_attributes(sectors1,sectors2,zones)
+    InvestorAttribute.where(investor: self).destroy_all
+    sectors1.each { |id| InvestorAttribute.create(investor: self, investor_nomenclature: InvestorNomenclature.find(id), type_attribute: "sector_primary")} unless sectors1.nil?
+    sectors2.each { |id| InvestorAttribute.create(investor: self, investor_nomenclature: InvestorNomenclature.find(id), type_attribute: "sector_secondary")} unless sectors2.nil?
+    zones.each { |id| InvestorAttribute.create(investor: self, investor_nomenclature: InvestorNomenclature.find(id), type_attribute: "zone")} unless zones.nil?
   end
 end
