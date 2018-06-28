@@ -22,7 +22,7 @@ class InvestorsController < ApplicationController
     @investor = Investor.new(investor_param)
     authorize @investor
     if @investor.save
-      @investor.update_sectors(params[:sector],params[:sector2])
+      @investor.update_attributes(params[:sector],params[:sector2],params[:zones])
       redirect_to investors_path
     else
       3.times { @investor.investor_contacts.build }
