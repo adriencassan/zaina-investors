@@ -8,10 +8,6 @@
 
 # Users / Zaina
 
-zaina1 = User.new(email: "admin@zaina.io", password: "password", first_name:"admin", last_name:"admin" ,admin: true)
-zaina1.save!
-
-
 
 # Secteurs
 InvestorNomenclature.create(type_nomenclature: 'sector', name: "Tous secteurs")
