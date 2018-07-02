@@ -32,7 +32,7 @@
           <div class="hidden-xs hidden-sm col-md-1"><p><%= investor.localisation %></p></div>
           <div class="hidden-xs hidden-sm col-md-1"><p><%= investor.nature %></p></div>
           <div class="hidden-xs hidden-sm col-md-1"><p><%= investor.operation_type %></p></div>
-          <div class="col-xs-4 col-md-1"><p><%= "#{investor.investment_min} - #{investor.investment_max} k€" %></p></div>
+          <div class="col-xs-4 col-md-1"><p><%= "#{investor.investment_min} - #{investor.investment_max} kDhs" %></p></div>
           <div class="hidden-xs hidden-sm col-md-5"><p><%= investor.sectors_primary.pluck(:name).join(" - ") %></p></div>
           <div class="col-xs-1"> <%= link_to "Modifier", edit_investor_path(investor), class:"btn btn-primary btn-form-sm"%> </div>
         </div>

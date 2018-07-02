@@ -42,12 +42,12 @@
                 </div>
 
                 <div class="col-xs-6">
-                  <%= f.input :operation_type, required: true, collection: ["Debt","Equity"], placeholder: "Choisir un élément", label: "Type d'opération"  %>
+                  <%= f.input :operation_type, required: true, collection: InvestorNomenclature.type_operations, placeholder: "Choisir un élément", label: "Type d'opération"  %>
                 </div>
 
 
-                <%= f.input :investment_min, required: true,label: "Ticket minimum (k€)", input_html: {class: "text-center"} ,wrapper_html: {class: "col-xs-6"} %>
-                <%= f.input :investment_max, required: true,label: "Ticket maximum (k€)", input_html: {class: "text-center"}, wrapper_html: {class: "col-xs-6"} %>
+                <%= f.input :investment_min, required: true,label: "Ticket minimum (kDhs)", input_html: {class: "text-center"} ,wrapper_html: {class: "col-xs-6"} %>
+                <%= f.input :investment_max, required: true,label: "Ticket maximum (kDhs)", input_html: {class: "text-center"}, wrapper_html: {class: "col-xs-6"} %>
 
 
               </div>
