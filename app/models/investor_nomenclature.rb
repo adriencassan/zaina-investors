@@ -11,4 +11,8 @@ class InvestorNomenclature < ApplicationRecord
   def self.nature_operations
     InvestorNomenclature.where(type_nomenclature: "nature_operation").pluck(:name)
   end
+
+  def self.type_operations
+    InvestorNomenclature.where(type_nomenclature: "type_operation").pluck(:name)
+  end
 end
