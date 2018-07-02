@@ -41,6 +41,6 @@ class InvestorsController < ApplicationController
   private
 
   def investor_param
-    params.require(:investor).permit(:name, :sectors, :sectors2, :zones, :investment_min, :investment_max, :nature, :operation_type, :localisation, :comment, investor_contacts_attributes: [:id, :name, :role, :email, :phone, :_destroy])
+    params.require(:investor).permit(:name, :sectors, :sectors2, :zones, :investment_min, :investment_max, :nature, :operation_type, :localisation, :comment, :corp_value_min, :corp_value_max, :target_criteria, :terms_financial, :terms_other, investor_contacts_attributes: [:id, :name, :role, :email, :phone, :_destroy])
   end
 end
