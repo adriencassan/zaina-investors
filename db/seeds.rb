@@ -79,7 +79,15 @@ InvestorNomenclature.create(type_nomenclature: 'zone', name: 'Côte d’Ivoire')
 InvestorNomenclature.create(type_nomenclature: 'zone', name: 'Egypte')
 InvestorNomenclature.create(type_nomenclature: 'zone', name: 'Sénégal')
 
-#Natures opérations
+
+# Type d'opération
+InvestorNomenclature.create(type_nomenclature: 'type_operation', name: 'Debt')
+InvestorNomenclature.create(type_nomenclature: 'type_operation', name: 'Prise de participation majoritaire')
+InvestorNomenclature.create(type_nomenclature: 'type_operation', name: 'Prise de participation minoritaire')
+InvestorNomenclature.create(type_nomenclature: 'type_operation', name: 'Prise de participation indifférente')
+
+
+# Natures opérations
 InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Capital Amorçage')
 InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Capital Risque')
 InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Capital Développement')
@@ -90,4 +98,40 @@ InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Rachat
 InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Retournement')
 InvestorNomenclature.create(type_nomenclature: 'nature_operation', name: 'Garantie ')
 
+
+
+#users :
+zaina1 = User.create(email: "admin@zaina.io", password: "password", first_name:"admin", last_name:"admin" ,admin: true)
+
+
+# Test
+35.times do |i|
+  investor = Investor.new(name: "investisseur n°#{i}", nature: InvestorNomenclature.nature_operations.sample, investment_min: rand(100..1000), investment_max: rand(100..1000), localisation: ["DZ","FR","AU","BE","CA","CN","DE","MX","TN","SN","MA","US"].sample, operation_type: "Equity")
+  investor.save!
+end
+
+
+Investor.all.each do |investor|
+
+  rand(1..3).times do
+    investor_sector = InvestorAttribute.new(investor: investor, investor_nomenclature: InvestorNomenclature.sectors.sample, type_attribute: "sector_primary")
+    investor_sector.save!
+  end
+
+  rand(1..3).times do
+    investor_sector = InvestorAttribute.new(investor: investor, investor_nomenclature: InvestorNomenclature.sectors.sample, type_attribute: "sector_secondary")
+    investor_sector.save!
+  end
+
+  rand(1..2).times do
+    investor_zone = InvestorAttribute.new(investor: investor, investor_nomenclature: InvestorNomenclature.zones.sample, type_attribute: "zone")
+    investor_zone.save!
+  end
+end
+
+
+3.times do |i|
+  investor = Investor.find(1)
+  investor_contact  = InvestorContact.create(investor: investor, name:"Adrien #{i}")
+end
 
