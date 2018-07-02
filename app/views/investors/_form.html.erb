@@ -20,6 +20,9 @@
             <a class="nav-link" id="target-tab" data-toggle="tab" href="#target" role="tab" aria-controls="target" aria-selected="false">Cibles</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" id="target-tab" data-toggle="tab" href="#terms" role="tab" aria-controls="terms" aria-selected="false">Caractéristiques du financement</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contacts</a>
           </li>
           <li class="nav-item">
@@ -29,7 +32,7 @@
 
         <div class="tab-content" id="myTabContent">
 
-          <!-- Tab1 -->
+          <!-- Tab "Home" -->
           <div class="tab-pane fade active in" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="form-tab-content">
               <div class="row">
@@ -46,19 +49,29 @@
                 </div>
 
 
-                <%= f.input :investment_min, required: true,label: "Ticket minimum (kDhs)", input_html: {class: "text-center"} ,wrapper_html: {class: "col-xs-6"} %>
-                <%= f.input :investment_max, required: true,label: "Ticket maximum (kDhs)", input_html: {class: "text-center"}, wrapper_html: {class: "col-xs-6"} %>
+                <div class="col-xs-12">
+                  <label>Ticket min-max (kDhs) :</label>
+                </div>
+                <%= f.input :investment_min, label: false, required: true, placeholder: "minimum", input_html: {class: "text-center"} ,wrapper_html: {class: "col-xs-6"} %>
+                <%= f.input :investment_max, label: false, required: true, placeholder: "maximum", input_html: {class: "text-center"}, wrapper_html: {class: "col-xs-6"} %>
 
 
               </div>
             </div>
           </div>
 
+          <!-- Tab Target -->
           <div class="tab-pane fade" id="target" role="tabpanel" aria-labelledby="target-tab">
             <div class="form-tab-content">
 
 
               <div class="row">
+
+                <div class="col-xs-12">
+                  <label>Valeur d'entreprise min-max (kDhs) :</label>
+                </div>
+                  <%= f.input :corp_value_min, label: false, placeholder: "minimum", input_html: {class: "text-center"} ,wrapper_html: {class: "col-xs-6"} %>
+                  <%= f.input :corp_value_max, label: false, placeholder: "maximum", input_html: {class: "text-center"}, wrapper_html: {class: "col-xs-6"} %>
 
                 <div class="col-xs-12">
                   <label>Selectionnez les secteurs :</label>
@@ -75,11 +88,21 @@
                   <%= select_tag "zones", options_from_collection_for_select(InvestorNomenclature.zones.all,:id,:name,selected: @investor.zones.pluck(:id)), multiple: true, class: 'select2 select-sectors form-control' %>
                 </div>
 
+                <%= f.input :target_criteria, label: "Critères d'éligibilité", as: :text, autofocus: true, input_html: {row: 8, class: "from-control-lg"}, wrapper_html: {class: "col-xs-12"} %>
+
               </div>
             </div>
           </div>
 
-          <!-- Tab2 -->
+          <!-- Tab "Terms" -->
+          <div class="tab-pane fade" id="terms" role="tabpanel" aria-labelledby="terms-tab">
+            <div class="form-tab-content">
+              <%= f.input :terms_financial, label: "Montant & conditions financières", as: :text, autofocus: true, input_html: {row: 8, class: "from-control-lg"}, wrapper_html: {class: "col-xs-12"} %>
+              <%= f.input :terms_other, label: "Autres conditions", as: :text, autofocus: true, input_html: {row: 8, class: "from-control-lg"}, wrapper_html: {class: "col-xs-12"} %>
+            </div>
+          </div>
+
+          <!-- Tab "Contact"-->
           <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <div class="form-tab-content">
                 <div class="row form-row">
@@ -102,7 +125,7 @@
             </div>
           </div>
 
-          <!-- Tab3 -->
+          <!-- Tab "Comment" -->
           <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">
             <div class="form-tab-content">
               <%= f.input :comment, required: true,label: "Commentaires", as: :text, autofocus: true, input_html: {row: 5, class: "from-control-lg"}, wrapper_html: {class: "col-xs-12"} %>
