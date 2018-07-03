@@ -6,7 +6,6 @@ class Investor < ApplicationRecord
 
 
    validates :name, presence: true
-   validates :operation_type, inclusion: { in: ["Debt","Equity"] }
 
 
   def sectors_primary

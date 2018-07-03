@@ -32,10 +32,13 @@ class InvestorsController < ApplicationController
 
   def update
     @investor = Investor.find(params[:id])
-    @investor.update(investor_param)
-    @investor.update_attributes(params[:sectors],params[:sectors2],params[:zones])
     authorize @investor
-    redirect_to investors_path
+    if @investor.update(investor_param)
+      @investor.update_attributes(params[:sectors],params[:sectors2],params[:zones])
+      redirect_to investors_path
+    else
+      render "investors/edit"
+    end
   end
 
   private
