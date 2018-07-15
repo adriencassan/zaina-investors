@@ -24,4 +24,8 @@ class InvestorPolicy < ApplicationPolicy
   def update?
     true
   end
+
+  def export?
+    true
+  end
 end
