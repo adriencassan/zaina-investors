@@ -41,6 +41,14 @@ class InvestorsController < ApplicationController
     end
   end
 
+  def export
+    @investors = policy_scope(Investor)
+    authorize @investors
+    respond_to do |format|
+      format.csv { send_data @investors.to_csv, filename: "investors-#{Date.today}.csv" }
+    end
+  end
+
   private
 
   def investor_param
