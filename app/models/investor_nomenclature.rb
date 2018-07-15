@@ -1,4 +1,5 @@
 class InvestorNomenclature < ApplicationRecord
+  validates :name, presence: true, format: { without: /(;|,|\/)/, message: "les caractères ; et , ne sont pas autorisés" }
 
   def self.sectors
     InvestorNomenclature.where(type_nomenclature: "sector").order(:name)
@@ -15,4 +16,5 @@ class InvestorNomenclature < ApplicationRecord
   def self.type_operations
     InvestorNomenclature.where(type_nomenclature: "type_operation").order(:name).pluck(:name)
   end
+
 end
