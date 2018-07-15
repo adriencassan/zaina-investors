@@ -1,3 +1,4 @@
+User.create(email: "admin@zaina.io", password: "20ZADM18@", first_name:"admin", last_name:"admin" ,admin: true)
 
 35.times do |i|
   investor = Investor.new(name: "investisseur n°#{i}", nature: InvestorNomenclature.nature_operations.sample, investment_min: rand(100..1000), investment_max: rand(100..1000), localisation: ["DZ","FR","AU","BE","CA","CN","DE","MX","TN","SN","MA","US"].sample, operation_type: "Equity")

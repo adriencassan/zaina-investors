@@ -41,16 +41,6 @@ class InvestorsController < ApplicationController
     end
   end
 
-  def export
-    @investors = policy_scope(Investor)
-    authorize @investors
-    respond_to do |format|
-      format.csv { send_data @investors.to_csv, filename: "investors-#{Date.today}.csv" }
-    end
-  end
-
-  private
-
   def investor_param
     params.require(:investor).permit(:name, :sectors, :sectors2, :zones, :investment_min, :investment_max, :nature, :operation_type, :localisation, :comment, :corp_value_min, :corp_value_max, :target_criteria, :terms_financial, :terms_other, investor_contacts_attributes: [:id, :name, :role, :email, :phone, :_destroy])
   end

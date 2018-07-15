@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   root to: "investors#index"
 
   resources :investors, only: [:index]
-  get 'investors/export', to: "investors#export", defaults: { format: 'csv' }
+
 
   resources :investors do
      resources :investor_sectors
      resources :investor_contacts
+  end
+
+  namespace :admin do
+    get 'export', to: "investors#export", defaults: { format: 'csv' }
   end
 
 end
